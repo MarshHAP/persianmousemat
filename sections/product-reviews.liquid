@@ -1,0 +1,139 @@
+{%- comment -%}
+  Native review list styled like the reference. If you install a reviews app
+  (Judge.me, Loox...), add its app block here and delete the review blocks.
+{%- endcomment -%}
+{%- liquid
+  assign review_count = 0
+  assign rating_total = 0
+  assign photo_count = 0
+  for block in section.blocks
+    if block.type == 'review'
+      assign review_count = review_count | plus: 1
+      assign rating_total = rating_total | plus: block.settings.rating
+      if block.settings.image != blank
+        assign photo_count = photo_count | plus: 1
+      endif
+    endif
+  endfor
+  if section.settings.count_override > 0
+    assign shown_count = section.settings.count_override
+  else
+    assign shown_count = review_count
+  endif
+  if section.settings.average_override != blank
+    assign average = section.settings.average_override
+  elsif review_count > 0
+    assign average = rating_total | times: 1.0 | divided_by: review_count | round: 1
+    assign average_str = average | append: ''
+    unless average_str contains '.'
+      assign average = average_str | append: '.0'
+    endunless
+  else
+    assign average = '5.0'
+  endif
+-%}
+<div class="reviews-section section-padding" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+  <div class="reviews" data-reviews data-per-page="{{ section.settings.per_page }}">
+    {%- for block in section.blocks -%}
+      {%- if block.type == '@app' -%}{% render block %}{%- endif -%}
+    {%- endfor -%}
+
+    {%- if review_count > 0 -%}
+      <div class="reviews__header">
+        <div>
+          <p class="reviews__heading">{{ section.settings.title | escape }}</p>
+          <p class="reviews__summary"><strong>{{ average }}</strong> <span>{{ shown_count }} {{ 'sections.reviews.reviews' | t }}</span></p>
+        </div>
+        <div class="reviews__actions">
+          {%- if section.settings.write_link != blank -%}
+            <a href="{{ section.settings.write_link }}" class="reviews__write">{{ 'sections.reviews.write' | t }}</a>
+          {%- else -%}
+            <span class="reviews__write" role="presentation">{{ 'sections.reviews.write' | t }}</span>
+          {%- endif -%}
+          <button type="button" class="reviews__tool" data-reviews-filter aria-label="{{ 'sections.reviews.filter' | t }}">{% render 'icon', icon: 'filter' %}</button>
+          <button type="button" class="reviews__tool" data-reviews-sort aria-label="{{ 'sections.reviews.sort' | t }}">{% render 'icon', icon: 'sort' %}</button>
+        </div>
+      </div>
+
+      {%- if photo_count > 0 -%}
+        <div class="reviews__photos" data-slider>
+          <ul class="reviews__photos-track" role="list" data-slider-track>
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'review' and block.settings.image != blank -%}
+                <li>{{ block.settings.image | image_url: width: 240, height: 240, crop: 'center' | image_tag: loading: 'lazy', alt: block.settings.author }}</li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+          <button type="button" class="reviews__photos-next" data-slider-next aria-label="{{ 'general.next' | t }}">{% render 'icon', icon: 'chevron-right' %}</button>
+        </div>
+      {%- endif -%}
+
+      <ul class="reviews__list" role="list" data-reviews-list>
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'review' -%}
+            <li class="review" data-rating="{{ block.settings.rating }}" {{ block.shopify_attributes }}>
+              <div class="review__stars" aria-label="{{ block.settings.rating }}/5">
+                {%- for i in (1..5) -%}
+                  {%- if i <= block.settings.rating -%}{% render 'icon', icon: 'star' %}{%- else -%}{% render 'icon', icon: 'star-outline' %}{%- endif -%}
+                {%- endfor -%}
+              </div>
+              <div class="review__author">
+                <span class="review__initial">{{ block.settings.author | slice: 0 | upcase }}</span>
+                <span class="review__name">{{ block.settings.author | escape }}</span>
+                {%- case block.settings.verified -%}
+                  {%- when 'shop' -%}<span class="review__verified review__verified--shop">Verified by <b>shop</b></span>
+                  {%- when 'buyer' -%}<span class="review__verified">Verified</span>
+                {%- endcase -%}
+              </div>
+              <p class="review__text">{{ block.settings.text | escape | newline_to_br }}</p>
+              {%- if block.settings.source != blank -%}<p class="review__source">{{ block.settings.source | escape }}</p>{%- endif -%}
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+      <nav class="reviews__pagination" data-reviews-pagination aria-label="{{ 'sections.reviews.pagination' | t }}"></nav>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Customer reviews",
+  "class": "section-reviews",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Customer Reviews" },
+    { "type": "text", "id": "average_override", "label": "Average rating override", "info": "e.g. 4.7 — leave empty to calculate from the reviews below" },
+    { "type": "number", "id": "count_override", "label": "Review count override", "default": 0 },
+    { "type": "url", "id": "write_link", "label": "\"Write a review\" link" },
+    { "type": "range", "id": "per_page", "min": 3, "max": 10, "step": 1, "label": "Reviews per page", "default": 5 },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Top padding", "default": 60 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Bottom padding", "default": 48 }
+  ],
+  "blocks": [
+    { "type": "@app" },
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "range", "id": "rating", "min": 1, "max": 5, "step": 1, "label": "Rating", "default": 5 },
+        { "type": "text", "id": "author", "label": "Name", "default": "Customer" },
+        {
+          "type": "select",
+          "id": "verified",
+          "label": "Badge",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "buyer", "label": "Verified" },
+            { "value": "shop", "label": "Verified by Shop" }
+          ],
+          "default": "none"
+        },
+        { "type": "textarea", "id": "text", "label": "Review", "default": "Love it!" },
+        { "type": "text", "id": "source", "label": "Source line", "info": "e.g. Review written in Shop App" },
+        { "type": "image_picker", "id": "image", "label": "Customer photo" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Customer reviews", "blocks": [{ "type": "review" }, { "type": "review" }] }]
+}
+{% endschema %}

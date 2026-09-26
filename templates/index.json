@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "hero": {
+      "type": "image-banner",
+      "settings": {
+        "height": 720,
+        "height_mobile": 420,
+        "heading": "Bring Persian Art To Your Desk",
+        "button_label": "👉 CLAIM OFFER",
+        "position": "bottom"
+      }
+    },
+    "offer_bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "o1": { "type": "announcement", "settings": { "bold_text": "LIMITED TIME: 30% OFF", "text": "TODAY ONLY" } }
+      },
+      "block_order": ["o1"],
+      "settings": { "show_icon": true, "speed": 4, "background": "#5bbc05", "text_color": "#ffffff" }
+    }
+  },
+  "order": ["hero", "offer_bar"]
+}

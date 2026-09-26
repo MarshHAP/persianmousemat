@@ -1,0 +1,31 @@
+<div class="main-page">
+  <div class="page-width" style="max-width: 480px;">
+    <div id="recover" hidden>
+      <h1 class="main-page__title">{{ 'customer.reset_password' | t }}</h1>
+      <p style="margin-bottom: 20px;">{{ 'customer.reset_info' | t }}</p>
+      {%- form 'recover_customer_password' -%}
+        {%- if form.posted_successfully? -%}<p class="form-message form-message--success">Check your email.</p>{%- endif -%}
+        {%- if form.errors -%}<div class="form-message form-message--error">{{ form.errors | default_errors }}</div>{%- endif -%}
+        <input class="form-field" type="email" name="email" placeholder="{{ 'customer.email' | t }}" autocomplete="email" required>
+        <button class="button button--full">{{ 'customer.submit' | t }}</button>
+        <p style="margin-top: 16px;"><a href="#login" onclick="document.getElementById('recover').hidden=true;document.getElementById('login').hidden=false;return false;">{{ 'customer.cancel' | t }}</a></p>
+      {%- endform -%}
+    </div>
+    <div id="login">
+      <h1 class="main-page__title">{{ 'customer.log_in' | t }}</h1>
+      {%- form 'customer_login' -%}
+        {%- if form.errors -%}<div class="form-message form-message--error">{{ form.errors | default_errors }}</div>{%- endif -%}
+        <input class="form-field" type="email" name="customer[email]" placeholder="{{ 'customer.email' | t }}" autocomplete="email" required>
+        {%- if form.password_needed -%}
+          <input class="form-field" type="password" name="customer[password]" placeholder="{{ 'customer.password' | t }}" autocomplete="current-password">
+          <p style="margin-bottom: 16px; font-size: 14px;"><a href="#recover" onclick="document.getElementById('recover').hidden=false;document.getElementById('login').hidden=true;return false;">{{ 'customer.forgot_password' | t }}</a></p>
+        {%- endif -%}
+        <button class="button button--full">{{ 'customer.log_in' | t }}</button>
+      {%- endform -%}
+      <p style="margin-top: 20px; text-align: center;"><a href="{{ routes.account_register_url }}">{{ 'customer.register' | t }}</a></p>
+      {%- if shop.checkout.guest_login -%}
+        {%- form 'guest_login' -%}<button class="button button--full" style="margin-top: 16px;">Continue as guest</button>{%- endform -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>

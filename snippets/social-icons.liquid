@@ -1,0 +1,13 @@
+{%- if settings.social_instagram_link != blank or settings.social_tiktok_link != blank or settings.social_facebook_link != blank -%}
+  <ul class="social-icons" role="list">
+    {%- if settings.social_instagram_link != blank -%}
+      <li><a href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener">{% render 'icon', icon: 'instagram' %}<span class="visually-hidden">Instagram</span></a></li>
+    {%- endif -%}
+    {%- if settings.social_tiktok_link != blank -%}
+      <li><a href="{{ settings.social_tiktok_link }}" target="_blank" rel="noopener">{% render 'icon', icon: 'tiktok' %}<span class="visually-hidden">TikTok</span></a></li>
+    {%- endif -%}
+    {%- if settings.social_facebook_link != blank -%}
+      <li><a href="{{ settings.social_facebook_link }}" target="_blank" rel="noopener">{% render 'icon', icon: 'facebook' %}<span class="visually-hidden">Facebook</span></a></li>
+    {%- endif -%}
+  </ul>
+{%- endif -%}

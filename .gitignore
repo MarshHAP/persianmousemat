@@ -1,0 +1,4 @@
+node_modules/
+dev/screenshots/
+*.zip
+.DS_Store

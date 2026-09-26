@@ -1,0 +1,120 @@
+{%- liquid
+  assign upsell = settings.upsell_product
+  assign upsell_in_cart = false
+  for item in cart.items
+    if upsell != blank and item.product_id == upsell.id
+      assign upsell_in_cart = item
+    endif
+  endfor
+-%}
+<cart-drawer class="cart-drawer{% if cart.item_count == 0 %} is-empty{% endif %}" data-cart-drawer aria-hidden="true">
+  <div class="cart-drawer__overlay" data-cart-close></div>
+  <div class="cart-drawer__panel" role="dialog" aria-modal="true" aria-label="{{ 'sections.cart.title' | t }}" tabindex="-1">
+    <div class="cart-drawer__header">
+      <h2 class="cart-drawer__title">{{ 'sections.cart.title' | t }} • {{ cart.item_count }} {{ 'sections.cart.items' | t }}</h2>
+      <button type="button" class="cart-drawer__close" data-cart-close aria-label="{{ 'general.close' | t }}">{% render 'icon', icon: 'close' %}</button>
+    </div>
+
+    {%- if cart.item_count > 0 -%}
+      {%- if settings.cart_reserve_timer -%}
+        <div class="cart-drawer__reserve" data-reserve-timer data-minutes="{{ settings.cart_reserve_minutes }}">
+          {{ 'sections.cart.reserved' | t }} <strong data-reserve-time>{{ settings.cart_reserve_minutes }}:00</strong>
+        </div>
+      {%- endif -%}
+
+      <ul class="cart-drawer__items" role="list">
+        {%- for item in cart.items -%}
+          <li class="cart-item" data-line="{{ forloop.index }}" data-key="{{ item.key }}">
+            <a href="{{ item.url }}" class="cart-item__image">
+              {%- if item.image -%}
+                {{ item.image | image_url: width: 200 | image_tag: loading: 'lazy', alt: item.title }}
+              {%- else -%}
+                {% render 'image-or-placeholder', alt: '' %}
+              {%- endif -%}
+            </a>
+            <div class="cart-item__details">
+              <a href="{{ item.url }}" class="cart-item__title">{{ item.product.title | escape }}</a>
+              {%- unless item.product.has_only_default_variant -%}
+                <p class="cart-item__variant">{{ item.variant.title | escape }}</p>
+              {%- endunless -%}
+              {%- for discount in item.line_level_discount_allocations -%}
+                <p class="cart-item__discount">{% render 'icon', icon: 'tag' %} {{ discount.discount_application.title | escape }} (-{{ discount.amount | money }})</p>
+              {%- endfor -%}
+              <div class="cart-item__row">
+                <div class="quantity" data-quantity-control>
+                  <button type="button" data-qty-change="-1" aria-label="{{ 'sections.cart.decrease' | t }}">{% render 'icon', icon: 'minus' %}</button>
+                  <input type="number" value="{{ item.quantity }}" min="0" aria-label="{{ 'sections.cart.quantity' | t }}" data-qty-input>
+                  <button type="button" data-qty-change="1" aria-label="{{ 'sections.cart.increase' | t }}">{% render 'icon', icon: 'plus' %}</button>
+                </div>
+                <div class="cart-item__prices">
+                  {%- if item.original_line_price > item.final_line_price -%}
+                    <s>{{ item.original_line_price | money }}</s>
+                  {%- endif -%}
+                  <span>{{ item.final_line_price | money }}</span>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="cart-item__remove" data-qty-remove aria-label="{{ 'sections.cart.remove' | t }}">{% render 'icon', icon: 'close' %}</button>
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      <div class="cart-drawer__footer">
+        {%- if upsell != blank -%}
+          {%- assign up_variant = upsell.selected_or_first_available_variant -%}
+          <label class="upsell upsell--cart">
+            <span class="upsell__image">
+              {%- if settings.upsell_image != blank -%}
+                {{ settings.upsell_image | image_url: width: 120 | image_tag: loading: 'lazy', alt: '' }}
+              {%- else -%}
+                {% render 'priority-seal' %}
+              {%- endif -%}
+            </span>
+            <h3 class="upsell__title">{{ settings.upsell_title | default: upsell.title | escape }}</h3>
+            <span class="upsell__prices">
+              <span class="upsell__price">{{ up_variant.price | money }}</span>
+              {%- if up_variant.compare_at_price > up_variant.price -%}<s class="upsell__compare">{{ up_variant.compare_at_price | money }}</s>{%- endif -%}
+            </span>
+            <input
+              type="checkbox"
+              class="upsell__input"
+              data-cart-upsell
+              data-variant-id="{{ up_variant.id }}"
+              {% if upsell_in_cart %}checked data-key="{{ upsell_in_cart.key }}"{% endif %}
+            >
+            <span class="upsell__switch" aria-hidden="true"></span>
+          </label>
+        {%- endif -%}
+
+        {%- if cart.cart_level_discount_applications.size > 0 -%}
+          <ul class="cart-drawer__discounts" role="list">
+            {%- for discount in cart.cart_level_discount_applications -%}
+              <li>{% render 'icon', icon: 'tag' %} {{ discount.title | escape }} (-{{ discount.total_allocated_amount | money }})</li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        <div class="cart-drawer__subtotal">
+          <span>{{ 'sections.cart.subtotal' | t }}</span>
+          <strong>{{ cart.total_price | money_with_currency }}</strong>
+        </div>
+        <p class="cart-drawer__note">{{ 'sections.cart.taxes' | t }}</p>
+        <form action="{{ routes.cart_url }}" method="post">
+          <button type="submit" name="checkout" class="button button--full">{{ 'sections.cart.checkout' | t }}</button>
+        </form>
+        <p class="secure-text secure-text--small">{% render 'icon', icon: 'lock' %} {{ 'sections.cart.secure' | t }}</p>
+      </div>
+    {%- else -%}
+      <div class="cart-drawer__empty">
+        <p class="cart-drawer__empty-title">{{ 'sections.cart.empty' | t }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="button" data-cart-close>{{ 'general.continue_shopping' | t }}</a>
+        {%- if shop.customer_accounts_enabled and customer == nil -%}
+          <p class="cart-drawer__login">
+            {{ 'sections.cart.login.title' | t }}
+            <a href="{{ routes.account_login_url }}">{{ 'sections.cart.login.link' | t }}</a>
+          </p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</cart-drawer>

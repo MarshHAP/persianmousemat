@@ -1,0 +1,32 @@
+<div class="main-page">
+  <div class="page-width" style="max-width: 700px;">
+    <p><a href="{{ routes.account_url }}">&larr; {{ 'customer.account' | t }}</a></p>
+    <h1 class="main-page__title">{{ 'customer.addresses' | t }}</h1>
+    {%- paginate customer.addresses by 10 -%}
+      {%- for address in customer.addresses -%}
+        <div style="padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,.1);">
+          {%- if address == customer.default_address -%}<strong>{{ 'customer.default_address' | t }}</strong>{%- endif -%}
+          {{ address | format_address }}
+          {%- form 'customer_address', address -%}
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit" style="border:0;background:none;padding:0;color:#b00;text-decoration:underline;">{{ 'customer.delete' | t }}</button>
+          {%- endform -%}
+        </div>
+      {%- endfor -%}
+    {%- endpaginate -%}
+    <h2 style="margin: 30px 0 14px;">{{ 'customer.add_address' | t }}</h2>
+    {%- form 'customer_address', customer.new_address -%}
+      <input class="form-field" name="address[first_name]" placeholder="{{ 'customer.first_name' | t }}" autocomplete="given-name">
+      <input class="form-field" name="address[last_name]" placeholder="{{ 'customer.last_name' | t }}" autocomplete="family-name">
+      <input class="form-field" name="address[address1]" placeholder="Address" autocomplete="address-line1">
+      <input class="form-field" name="address[address2]" placeholder="Apartment, suite, etc." autocomplete="address-line2">
+      <input class="form-field" name="address[city]" placeholder="City" autocomplete="address-level2">
+      <select class="form-field" name="address[country]" data-default="{{ form.country }}">{{ all_country_option_tags }}</select>
+      <input class="form-field" name="address[province]" placeholder="County / State" autocomplete="address-level1">
+      <input class="form-field" name="address[zip]" placeholder="Postcode" autocomplete="postal-code">
+      <input class="form-field" name="address[phone]" placeholder="Phone" autocomplete="tel">
+      <label style="display:flex;gap:8px;align-items:center;margin-bottom:14px;font-size:14px;"><input type="checkbox" name="address[default]" value="1"> Set as default address</label>
+      <button class="button">{{ 'customer.save' | t }}</button>
+    {%- endform -%}
+  </div>
+</div>

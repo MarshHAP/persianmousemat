@@ -1,0 +1,59 @@
+{%- liquid
+  assign h = section.settings.height
+  assign hm = section.settings.height_mobile
+-%}
+<div
+  class="wave-divider wave-divider--{{ section.settings.style }}{% if section.settings.flip_x %} wave-divider--flip-x{% endif %}"
+  style="--wd-top: {{ section.settings.color_top }}; --wd-bottom: {{ section.settings.color_bottom }}; --wd-wave: {{ section.settings.color_wave }}; --wd-layer: {{ section.settings.color_layer }}; --wd-h: {{ h }}px; --wd-hm: {{ hm }}px;"
+  aria-hidden="true"
+>
+  {%- case section.settings.style -%}
+    {%- when 'ribbon' -%}
+      <svg viewBox="0 0 1440 110" preserveAspectRatio="none">
+        <rect width="1440" height="110" fill="var(--wd-top)"/>
+        <path d="M0 24 C 360 40 720 44 1080 6 C 1250 -6 1360 4 1440 8 L1440 40 C 1100 30 700 70 0 70Z" fill="var(--wd-wave)" opacity=".35"/>
+        <path d="M0 40 C 400 80 800 90 1100 108 C 1260 112 1380 100 1440 96 L1440 70 C 1000 80 500 70 0 64Z" fill="var(--wd-wave)" opacity=".35"/>
+        <path d="M0 12 C 380 52 760 60 1080 44 C 1260 34 1380 18 1440 12 L1440 100 C 1200 96 1000 80 720 74 C 440 70 220 86 0 100Z" fill="var(--wd-wave)"/>
+      </svg>
+    {%- when 'curve' -%}
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <rect width="1440" height="120" fill="var(--wd-top)"/>
+        <path d="M0 28 C 300 40 520 92 760 88 C 1000 84 1220 16 1440 0 L1440 120 L0 120Z" fill="var(--wd-layer)"/>
+        <path d="M0 22 C 300 50 560 100 820 98 C 1060 96 1260 44 1440 34 L1440 120 L0 120Z" fill="var(--wd-bottom)"/>
+      </svg>
+    {%- when 'curve_down' -%}
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <rect width="1440" height="120" fill="var(--wd-bottom)"/>
+        <path d="M0 120 C 240 112 520 70 780 30 C 960 6 1100 10 1440 70 L1440 0 L0 0Z" fill="var(--wd-layer)"/>
+        <path d="M0 96 C 260 96 540 50 800 22 C 1000 2 1200 30 1440 84 L1440 0 L0 0Z" fill="var(--wd-top)"/>
+      </svg>
+  {%- endcase -%}
+</div>
+
+{% schema %}
+{
+  "name": "Wave divider",
+  "class": "section-wave",
+  "settings": [
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Style",
+      "options": [
+        { "value": "ribbon", "label": "Ribbon (accent)" },
+        { "value": "curve", "label": "Curve into section below" },
+        { "value": "curve_down", "label": "Curve out of section above" }
+      ],
+      "default": "ribbon"
+    },
+    { "type": "range", "id": "height", "min": 20, "max": 200, "step": 5, "unit": "px", "label": "Desktop height", "default": 110 },
+    { "type": "range", "id": "height_mobile", "min": 20, "max": 150, "step": 5, "unit": "px", "label": "Mobile height", "default": 55 },
+    { "type": "checkbox", "id": "flip_x", "label": "Flip horizontally", "default": false },
+    { "type": "color", "id": "color_top", "label": "Color above", "default": "#ffffff" },
+    { "type": "color", "id": "color_bottom", "label": "Color below", "default": "#ffffff" },
+    { "type": "color", "id": "color_wave", "label": "Ribbon color", "default": "#5bbc05" },
+    { "type": "color", "id": "color_layer", "label": "Curve accent layer", "default": "#9b9b9b" }
+  ],
+  "presets": [{ "name": "Wave divider" }]
+}
+{% endschema %}

@@ -1,0 +1,32 @@
+<div class="guarantee-section section-padding" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width">
+    {%- if section.settings.title != blank -%}
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+    <div class="guarantee__text rte">{{ section.settings.text }}</div>
+    <div class="guarantee__badge" style="--badge-w: {{ section.settings.badge_width }}px;">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 500 | image_tag: loading: 'lazy', alt: section.settings.title }}
+      {%- else -%}
+        {% render 'guarantee-seal', days: section.settings.days %}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Guarantee",
+  "class": "section-guarantee",
+  "settings": [
+    { "type": "inline_richtext", "id": "title", "label": "Heading", "default": "Heirloom Quality Guarantee" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>We stand behind every mat we make.</p>" },
+    { "type": "image_picker", "id": "image", "label": "Badge image", "info": "Leave empty to use the built-in money-back seal" },
+    { "type": "number", "id": "days", "label": "Days shown on built-in seal", "default": 90 },
+    { "type": "range", "id": "badge_width", "min": 80, "max": 400, "step": 5, "unit": "px", "label": "Badge width", "default": 170 },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Top padding", "default": 36 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Bottom padding", "default": 36 }
+  ],
+  "presets": [{ "name": "Guarantee" }]
+}
+{% endschema %}

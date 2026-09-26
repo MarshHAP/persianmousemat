@@ -1,0 +1,27 @@
+{%- comment -%}
+  Params: variant, badge_text ("SAVE [percent]%"), compact (bool)
+  Layout: compare-at (struck) first, then sale price, then badge — as on the PDP.
+  compact (sticky bar): sale price first, then compare-at.
+{%- endcomment -%}
+{%- liquid
+  assign price = variant.price
+  assign compare = variant.compare_at_price
+  assign on_sale = false
+  if compare > price
+    assign on_sale = true
+    assign saving = compare | minus: price | times: 100.0 | divided_by: compare | round
+    assign badge = badge_text | default: 'SAVE [percent]%' | replace: '[percent]', saving
+  endif
+-%}
+<div class="price{% if compact %} price--compact{% endif %}{% if on_sale %} price--on-sale{% endif %}">
+  {%- if compact -%}
+    <span class="price__sale">{{ price | money }}</span>
+    {%- if on_sale -%}<s class="price__compare">{{ compare | money }}</s>{%- endif -%}
+  {%- else -%}
+    {%- if on_sale -%}<s class="price__compare">{{ compare | money }}</s>{%- endif -%}
+    <span class="price__sale">{{ price | money }}</span>
+  {%- endif -%}
+  {%- if on_sale and badge != blank -%}
+    <span class="price__badge">{% render 'icon', icon: 'tag' %}<span>{{ badge }}</span></span>
+  {%- endif -%}
+</div>

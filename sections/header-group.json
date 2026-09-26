@@ -1,0 +1,32 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "countdown": {
+      "type": "countdown-bar",
+      "settings": {
+        "text": "WINTER SALE ENDS IN",
+        "mode": "daily",
+        "background": "#000000",
+        "text_color": "#5bbc05",
+        "box_color": "#5bbc05",
+        "number_color": "#000000"
+      }
+    },
+    "announcement": {
+      "type": "announcement-bar",
+      "blocks": {
+        "a1": { "type": "announcement", "settings": { "bold_text": "WINTER SALE", "text": "— 30% OFF" } },
+        "a2": { "type": "announcement", "settings": { "bold_text": "90-DAYS", "text": "MONEY-BACK GUARANTEE" } },
+        "a3": { "type": "announcement", "settings": { "bold_text": "LIMITED EDITION:", "text": "NOWRUZ DESIGN" } }
+      },
+      "block_order": ["a1", "a2", "a3"],
+      "settings": { "show_icon": true, "speed": 4, "background": "#5bbc05", "text_color": "#ffffff" }
+    },
+    "header": {
+      "type": "header",
+      "settings": { "menu": "main-menu", "sticky": false }
+    }
+  },
+  "order": ["countdown", "announcement", "header"]
+}

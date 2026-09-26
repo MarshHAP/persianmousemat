@@ -1,0 +1,125 @@
+# Persian Mouse Mat — Shopify theme
+
+A custom Shopify Online Store 2.0 theme for the Persian Mouse Mat brand. It is a
+single-product "funnel" store whose layout mirrors the reference store
+(memorymat.shop) section for section, re-skinned with Persian Mouse Mat copy.
+Every piece of text, colour and image can be edited in the Shopify theme editor.
+
+## Page layout
+
+**Product page** (`templates/product.json`), top to bottom:
+
+| # | Section | File |
+|---|---------|------|
+| 1 | Black countdown bar ("… SALE ENDS IN 00 12 18 50") | `sections/countdown-bar.liquid` |
+| 2 | Green rotating announcement bar (megaphone icon) | `sections/announcement-bar.liquid` |
+| 3 | Header: menu on the left (current page shown as a green pill), logo in the centre, account and cart on the right. Hamburger menu on mobile | `sections/header.liquid` |
+| 4 | Product hero: sticky gallery with thumbnails; buy box with orders pill, rating, title, price and SAVE badge, benefits, low-stock dot, Buy 1/2/3 quantity breaks, priority-processing toggle, add to cart, secure-checkout line, delivery timeline and mini review; sticky add-to-cart bar | `sections/main-product.liquid` |
+| 5 | Green ribbon wave | `sections/wave-divider.liquid` |
+| 6 | "Complete Your Setup" bundle | `sections/bundle-deals.liquid` |
+| 7 | Three testimonial cards (a slider on mobile) | `sections/testimonials.liquid` |
+| 8 | Dark band: two features, a portrait image or video, two more features | `sections/feature-columns.liquid` |
+| 9 | Guarantee text and money-back seal | `sections/guarantee.liquid` |
+| 10 | Black FAQ accordion | `sections/faq.liquid` |
+| 11 | Customer reviews with photo strip and pagination | `sections/product-reviews.liquid` |
+| 12 | Black footer: link menu, logo, mission text, country selector, payment icons | `sections/footer.liquid` |
+
+The homepage (`templates/index.json`) has a hero image with a dark "claim offer"
+box, followed by a green offer bar. The cart drawer includes a "cart reserved"
+timer and the priority-processing upsell toggle. The theme also includes
+collection, cart, search, page, contact, blog, article, 404, password,
+gift-card and customer-account templates.
+
+## Install
+
+**Option A: upload a zip.** In Shopify admin go to **Online Store → Themes →
+Add theme → Upload zip file**. Zip the theme folders (`assets`, `config`,
+`layout`, `locales`, `sections`, `snippets`, `templates`) at the root of the zip:
+
+```bash
+zip -r persian-mouse-mat-theme.zip assets config layout locales sections snippets templates
+```
+
+**Option B: Shopify CLI.**
+
+```bash
+shopify theme push --unpublished --store your-store.myshopify.com
+# or live-preview while editing:
+shopify theme dev --store your-store.myshopify.com
+```
+
+`.shopifyignore` keeps `dev/` and this README out of the upload.
+
+## Store setup checklist
+
+1. **Product.** Create "Persian Mouse Mat™" with a sale price and a
+   compare-at price. The SAVE % badge and the quantity-break prices are
+   calculated from these.
+2. **Menus** (Online Store → Navigation):
+   - `main-menu`: Persian Mouse Mat™ (links to the product), Track Your Order, Contact.
+   - `footer`: About Us, Shipping & Delivery, Returns & Refunds, Privacy Policy, Terms of Service, Contact.
+3. **Quantity-break discounts.** The Buy 2 (15% off) and Buy 3 (25% off)
+   prices are only displayed by the theme. To charge them at checkout, create
+   matching automatic discounts under **Discounts → Amount off products**
+   (for example, 15% off with a minimum quantity of 2 items, and 25% off with
+   a minimum of 3).
+4. **Priority processing.** Create a cheap product, for example "Priority
+   Processing" at £2.99 with a £4.27 compare-at price. Then pick it under
+   **Theme settings → Cart → Priority processing product**.
+5. **Bundle.** Create the second bundle product (the placeholder is "Persian
+   Coaster Set™") and pick it in the *Bundle deal* section.
+6. **Logo.** Upload it under **Theme settings → Logo**. Until then, a text
+   wordmark is shown.
+
+## Images to supply
+
+Until you add real images, every image slot shows a generated Persian-rug
+placeholder (`assets/pm-placeholder-rug*.svg`).
+
+| Where | Setting | Suggested size |
+|-------|---------|----------------|
+| Product gallery | Product media in admin (first image is the hero) | 1500×1000+, product on white |
+| Orders pill avatars (×3) | Product page → *Orders social proof* block | 100×100 |
+| Mini review avatar | Product page → *Mini review* block | 120×120 |
+| Bundle images | Featured image of each bundle product | 500×300 |
+| Testimonial cards (×3) + avatars | *Testimonials* section → each block | 800×750 lifestyle / 80×80 |
+| Dark features band | *Features with media* → image or video | portrait, 800×1160 (9:13) |
+| Guarantee seal (optional) | *Guarantee* → badge image | 400×400 transparent PNG |
+| Review photos | *Customer reviews* → each review's photo | 240×240 |
+| Homepage hero | *Image banner* → desktop and mobile images | 2400×1200 / 1000×1100 |
+| Priority seal (optional) | Theme settings → Cart → upsell badge | 120×120 |
+
+## Content that must be genuine before launch
+
+Some layout elements are claims about your business. UK consumer law (the
+DMCC Act 2024, in force since April 2025) makes fake reviews and misleading
+social proof unlawful, so make sure each of these is true or remove it:
+
+- **Placeholder text.** The testimonials, the mini review and the customer
+  reviews ship with text marked "Customer Name / Replace this…". Replace them
+  with real customer reviews, or install a reviews app (Judge.me, Loox, etc.)
+  and add its app block to the *Customer reviews* section.
+- **Orders pill and rating line.** "99+ orders in the last 24h" and "Rated
+  4.8/5 By 1250+ Customers" are editable blocks. Set real numbers, or delete
+  the blocks.
+- **Scarcity messages.** The "Low Stock" label, the countdown bar (which by
+  default resets at midnight) and the cart-reserved timer should reflect a
+  real offer. The countdown can be switched to a fixed end date.
+
+## Local preview (no Shopify store needed)
+
+`dev/` contains a small Node renderer that runs the theme's Liquid with mock
+product data. It also fakes the AJAX cart, so add-to-cart, the drawer, the
+upsell and the bundle all work locally.
+
+```bash
+cd dev
+npm install
+npm run preview   # http://localhost:4000/products/persian-mouse-mat
+npm run shots     # full-page desktop + mobile screenshots into dev/screenshots/
+```
+
+To preview your own photos before uploading them, change the image paths in
+`dev/preview/mock.mjs`. The renderer is only a development aid: Shopify's
+real Liquid engine is the source of truth, so use `shopify theme dev` for
+final checks.

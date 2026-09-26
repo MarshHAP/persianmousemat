@@ -1,0 +1,11 @@
+<div class="main-page">
+  <div class="page-width" style="max-width: 480px;">
+    <h1 class="main-page__title">{{ 'customer.activate' | t }}</h1>
+    {%- form 'activate_customer_password' -%}
+      {%- if form.errors -%}<div class="form-message form-message--error">{{ form.errors | default_errors }}</div>{%- endif -%}
+      <input class="form-field" type="password" name="customer[password]" placeholder="{{ 'customer.password' | t }}" autocomplete="new-password">
+      <input class="form-field" type="password" name="customer[password_confirmation]" placeholder="{{ 'customer.confirm_password' | t }}" autocomplete="new-password">
+      <button class="button button--full">{{ 'customer.activate' | t }}</button>
+    {%- endform -%}
+  </div>
+</div>

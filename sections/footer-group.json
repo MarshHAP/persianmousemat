@@ -1,0 +1,27 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer_wave": {
+      "type": "wave-divider",
+      "settings": { "style": "curve", "height": 60, "height_mobile": 30, "color_top": "#ffffff", "color_bottom": "#000000", "color_layer": "#9b9b9b" }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "links": { "type": "link_list", "settings": { "heading": "Customer Care", "menu": "footer" } },
+        "logo": { "type": "logo", "settings": { "width": 290 } },
+        "mission": {
+          "type": "text",
+          "settings": {
+            "heading": "Our Mission",
+            "text": "<p>At Persian Mouse Mat™, we believe the objects we touch every day should carry beauty and meaning.</p><p>Persian rugs have been passed down through generations for centuries — we wanted to bring a piece of that craft to your desk.</p><p>Because a workspace should feel like home, not just a place to work.</p>"
+          }
+        }
+      },
+      "block_order": ["links", "logo", "mission"],
+      "settings": { "background": "#000000", "show_country": true, "show_payment": true }
+    }
+  },
+  "order": ["footer_wave", "footer"]
+}

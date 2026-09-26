@@ -1,0 +1,48 @@
+<div
+  class="faq-section section-padding"
+  style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px; --faq-bg: {{ section.settings.background }}; --faq-text: {{ section.settings.text_color }};"
+>
+  <div class="faq">
+    {%- if section.settings.title != blank -%}
+      <h2 class="faq__title">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+    {%- for block in section.blocks -%}
+      <details class="faq__item" {% if forloop.first and section.settings.open_first %}open{% endif %} {{ block.shopify_attributes }}>
+        <summary class="faq__question">
+          <h3>{{ block.settings.question | escape }}</h3>
+          <span class="faq__icon faq__icon--plus">{% render 'icon', icon: 'plus' %}</span>
+          <span class="faq__icon faq__icon--minus">{% render 'icon', icon: 'minus' %}</span>
+        </summary>
+        <div class="faq__answer rte">{{ block.settings.answer }}</div>
+      </details>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "class": "section-faq",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Frequently Asked Questions" },
+    { "type": "checkbox", "id": "open_first", "label": "Open first question", "default": true },
+    { "type": "color", "id": "background", "label": "Background", "default": "#000000" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#ffffff" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Top padding", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Bottom padding", "default": 48 }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Question?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Answer.</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "FAQ", "blocks": [{ "type": "question" }, { "type": "question" }, { "type": "question" }] }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,89 @@
+<div
+  class="feature-columns-section section-padding color-{{ section.settings.color_scheme }}"
+  style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="page-width">
+    {%- if section.settings.title != blank -%}
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+    <div class="feature-columns">
+      <div class="feature-columns__col feature-columns__col--left">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.column == 'left' -%}
+            {% render 'feature-item', block: block %}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      <div class="feature-columns__media">
+        {%- if section.settings.video != blank -%}
+          {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true, image_size: '800x', class: 'feature-columns__video' }}
+        {%- else -%}
+          {% render 'image-or-placeholder', image: section.settings.image, class: 'feature-columns__img', alt: '', sizes: '(min-width: 990px) 400px, 100vw', width: 800 %}
+        {%- endif -%}
+      </div>
+      <div class="feature-columns__col feature-columns__col--right">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.column == 'right' -%}
+            {% render 'feature-item', block: block %}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Features with media",
+  "class": "section-feature-columns",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "inline_richtext", "id": "title", "label": "Heading", "default": "Bring Persian Art <strong>To Your Desk</strong>" },
+    { "type": "image_picker", "id": "image", "label": "Image (portrait works best)" },
+    { "type": "video", "id": "video", "label": "Video (overrides image)" },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Colors",
+      "options": [
+        { "value": "dark", "label": "Dark" },
+        { "value": "light", "label": "Light" }
+      ],
+      "default": "dark"
+    },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Top padding", "default": 36 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Bottom padding", "default": 36 }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "select",
+          "id": "column",
+          "label": "Column",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "Feature" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Describe a benefit of your product." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Features with media",
+      "blocks": [
+        { "type": "feature", "settings": { "column": "left" } },
+        { "type": "feature", "settings": { "column": "left" } },
+        { "type": "feature", "settings": { "column": "right" } },
+        { "type": "feature", "settings": { "column": "right" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

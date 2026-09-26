@@ -1,0 +1,17 @@
+<article class="main-page">
+  <div class="page-width">
+    <div class="article__content">
+      <p class="article__meta">{{ article.published_at | date: '%B %d, %Y' }}</p>
+      <h1 class="main-page__title">{{ article.title | escape }}</h1>
+      {%- if article.image -%}
+        {{ article.image | image_url: width: 1500 | image_tag: loading: 'eager', sizes: '(min-width: 800px) 760px, 100vw', widths: '550, 760, 1100, 1500', alt: article.title }}
+      {%- endif -%}
+      <div class="rte">{{ article.content }}</div>
+      <p style="margin-top: 40px;"><a href="{{ blog.url }}">&larr; {{ 'sections.blog.back' | t }}</a></p>
+    </div>
+  </div>
+</article>
+
+{% schema %}
+{ "name": "Blog post", "settings": [] }
+{% endschema %}

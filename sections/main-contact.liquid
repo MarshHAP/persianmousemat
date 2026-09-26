@@ -1,0 +1,22 @@
+<div class="main-page">
+  <div class="page-width" style="max-width: 700px;">
+    <h1 class="main-page__title">{{ page.title | escape }}</h1>
+    {%- if page.content != blank -%}<div class="rte" style="margin-bottom: 24px;">{{ page.content }}</div>{%- endif -%}
+    {%- form 'contact' -%}
+      {%- if form.posted_successfully? -%}
+        <p class="form-message form-message--success">{{ 'sections.contact.success' | t }}</p>
+      {%- elsif form.errors -%}
+        <div class="form-message form-message--error">{{ form.errors | default_errors }}</div>
+      {%- endif -%}
+      <input class="form-field" type="text" name="contact[name]" placeholder="{{ 'sections.contact.name' | t }}" value="{{ form.name }}" autocomplete="name">
+      <input class="form-field" type="email" name="contact[email]" placeholder="{{ 'sections.contact.email' | t }} *" value="{{ form.email }}" autocomplete="email" required>
+      <input class="form-field" type="tel" name="contact[phone]" placeholder="{{ 'sections.contact.phone' | t }}" value="{{ form.phone }}" autocomplete="tel">
+      <textarea class="form-field" rows="8" name="contact[body]" placeholder="{{ 'sections.contact.message' | t }}">{{ form.body }}</textarea>
+      <button type="submit" class="button">{{ 'sections.contact.send' | t }}</button>
+    {%- endform -%}
+  </div>
+</div>
+
+{% schema %}
+{ "name": "Contact form", "settings": [] }
+{% endschema %}

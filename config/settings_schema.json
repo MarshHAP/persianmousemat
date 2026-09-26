@@ -1,0 +1,201 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Persian Mouse Mat",
+    "theme_version": "1.0.0",
+    "theme_author": "Persian Mouse Mat",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://help.shopify.com/manual/online-store/themes"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent (buttons, prices, badges)",
+        "default": "#5bbc05"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#121212"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_dark",
+        "label": "Dark sections background",
+        "default": "#121212"
+      },
+      {
+        "type": "color",
+        "id": "color_card",
+        "label": "Card background",
+        "default": "#f5f5f5"
+      },
+      {
+        "type": "color",
+        "id": "color_stars",
+        "label": "Review stars",
+        "default": "#ffcc00"
+      },
+      {
+        "type": "color",
+        "id": "color_sale_dot",
+        "label": "Low stock dot",
+        "default": "#ff0000"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "type_font",
+        "label": "Font",
+        "default": "poppins_n4",
+        "info": "The layout is tuned for Poppins."
+      }
+    ]
+  },
+  {
+    "name": "Logo",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 60,
+        "max": 300,
+        "step": 5,
+        "unit": "px",
+        "label": "Desktop logo width",
+        "default": 160
+      },
+      {
+        "type": "range",
+        "id": "logo_width_mobile",
+        "min": 60,
+        "max": 200,
+        "step": 5,
+        "unit": "px",
+        "label": "Mobile logo width",
+        "default": 110
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Cart type",
+        "options": [
+          {
+            "value": "drawer",
+            "label": "Drawer"
+          },
+          {
+            "value": "page",
+            "label": "Page"
+          }
+        ],
+        "default": "drawer"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_reserve_timer",
+        "label": "Show \"cart reserved\" timer",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "cart_reserve_minutes",
+        "min": 1,
+        "max": 30,
+        "step": 1,
+        "unit": "min",
+        "label": "Reserve timer length",
+        "default": 10
+      },
+      {
+        "type": "header",
+        "content": "Priority processing upsell"
+      },
+      {
+        "type": "product",
+        "id": "upsell_product",
+        "label": "Priority processing product",
+        "info": "Create a low-price product (e.g. \"Priority Processing\") and pick it here. It is offered on the product page and in the cart drawer."
+      },
+      {
+        "type": "text",
+        "id": "upsell_title",
+        "label": "Upsell title",
+        "default": "Priority Processing"
+      },
+      {
+        "type": "image_picker",
+        "id": "upsell_image",
+        "label": "Upsell badge image"
+      },
+      {
+        "type": "checkbox",
+        "id": "upsell_default_on",
+        "label": "Toggle on by default",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram",
+        "info": "https://instagram.com/..."
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok_link",
+        "label": "TikTok",
+        "info": "https://tiktok.com/@..."
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook"
+      }
+    ]
+  },
+  {
+    "name": "Extras",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_scroll_top",
+        "label": "Show scroll-to-top button",
+        "default": true
+      }
+    ]
+  }
+]

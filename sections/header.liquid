@@ -1,0 +1,75 @@
+{%- liquid
+  assign menu = linklists[section.settings.menu]
+-%}
+<header-wrapper class="header-wrapper{% if section.settings.sticky %} header-wrapper--sticky{% endif %}">
+  <header class="header">
+    <button type="button" class="header__icon header__icon--menu" aria-label="{{ 'sections.header.menu' | t }}" data-menu-open>
+      {% render 'icon', icon: 'menu' %}
+    </button>
+
+    <nav class="header__nav" aria-label="{{ 'sections.header.menu' | t }}">
+      <ul class="header__menu" role="list">
+        {%- for link in menu.links -%}
+          <li>
+            <a href="{{ link.url }}" class="header__menu-item{% if link.current or link.child_active %} is-active{% endif %}"{% if link.current %} aria-current="page"{% endif %}>
+              <span>{{ link.title | escape }}</span>
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <a href="{{ routes.root_url }}" class="header__logo">
+      {%- if settings.logo != blank -%}
+        {{ settings.logo | image_url: width: 600 | image_tag: class: 'header__logo-img', alt: shop.name, loading: 'eager', widths: '160, 240, 320, 480' }}
+      {%- else -%}
+        {% render 'logo-wordmark' %}
+      {%- endif -%}
+    </a>
+
+    <div class="header__icons">
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="header__icon header__icon--account">
+          {% render 'icon', icon: 'account' %}
+          <span class="visually-hidden">{{ 'customer.log_in' | t }}</span>
+        </a>
+      {%- endif -%}
+      <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart" data-cart-open>
+        {% render 'icon', icon: 'cart' %}
+        <span class="visually-hidden">{{ 'sections.header.cart' | t }}</span>
+        <span class="header__cart-count" data-cart-count{% if cart.item_count == 0 %} hidden{% endif %}>{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="menu-drawer" data-menu-drawer aria-hidden="true">
+    <div class="menu-drawer__overlay" data-menu-close></div>
+    <div class="menu-drawer__panel">
+      <button type="button" class="menu-drawer__close" data-menu-close aria-label="{{ 'general.close' | t }}">{% render 'icon', icon: 'close' %}</button>
+      <ul class="menu-drawer__menu" role="list">
+        {%- for link in menu.links -%}
+          <li><a href="{{ link.url }}" class="menu-drawer__item{% if link.current %} is-active{% endif %}">{{ link.title | escape }}</a></li>
+        {%- endfor -%}
+      </ul>
+      <div class="menu-drawer__utility">
+        {%- if shop.customer_accounts_enabled -%}
+          <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="menu-drawer__account">
+            {% render 'icon', icon: 'account' %} {{ 'customer.log_in' | t }}
+          </a>
+        {%- endif -%}
+        {% render 'social-icons' %}
+      </div>
+    </div>
+  </div>
+</header-wrapper>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "section-header",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+    { "type": "checkbox", "id": "sticky", "label": "Sticky header", "default": false }
+  ]
+}
+{% endschema %}

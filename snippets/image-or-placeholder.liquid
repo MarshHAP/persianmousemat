@@ -1,0 +1,19 @@
+{%- comment -%}
+  Renders an image, or the bundled Persian rug placeholder when none is set.
+  Params: image, width (max px), class, alt, sizes, loading, placeholder ('1' | '2')
+{%- endcomment -%}
+{%- liquid
+  assign w = width | default: 1500
+  assign ld = loading | default: 'lazy'
+  assign sz = sizes | default: '100vw'
+-%}
+{%- if image != blank -%}
+  {{ image | image_url: width: w | image_tag: class: class, alt: alt, loading: ld, sizes: sz, widths: '165, 360, 535, 750, 1070, 1500' }}
+{%- else -%}
+  {%- if placeholder == '2' -%}
+    {%- assign ph = 'pm-placeholder-rug-2.svg' | asset_url -%}
+  {%- else -%}
+    {%- assign ph = 'pm-placeholder-rug.svg' | asset_url -%}
+  {%- endif -%}
+  <img src="{{ ph }}" alt="{{ alt | escape }}" class="{{ class }} is-placeholder" loading="{{ ld }}" width="900" height="400">
+{%- endif -%}

@@ -1,0 +1,25 @@
+{
+  "current": {
+    "color_accent": "#5bbc05",
+    "color_text": "#121212",
+    "color_background": "#ffffff",
+    "color_dark": "#121212",
+    "color_card": "#f5f5f5",
+    "color_stars": "#ffcc00",
+    "color_sale_dot": "#ff0000",
+    "logo_width": 160,
+    "logo_width_mobile": 110,
+    "cart_type": "drawer",
+    "cart_reserve_timer": true,
+    "cart_reserve_minutes": 10,
+    "upsell_title": "Priority Processing",
+    "upsell_default_on": true,
+    "show_scroll_top": true,
+    "type_font": "poppins_n4"
+  },
+  "presets": {
+    "Default": {
+      "color_accent": "#5bbc05"
+    }
+  }
+}

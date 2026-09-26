@@ -1,0 +1,25 @@
+<div class="main-page">
+  <div class="page-width">
+    <h1 class="main-page__title">{{ page_title | escape }}</h1>
+    <ul class="product-grid" role="list">
+      {%- for collection in collections -%}
+        <li>
+          <a href="{{ collection.url }}" class="card">
+            <div class="card__media">
+              {%- if collection.featured_image -%}
+                {{ collection.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: collection.title }}
+              {%- else -%}
+                {% render 'image-or-placeholder', alt: collection.title %}
+              {%- endif -%}
+            </div>
+            <h2 class="card__title">{{ collection.title | escape }}</h2>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{ "name": "Collections list", "settings": [] }
+{% endschema %}

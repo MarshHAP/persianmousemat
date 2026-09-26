@@ -1,0 +1,30 @@
+<div class="main-page">
+  <div class="page-width" style="max-width: 900px;">
+    <h1 class="main-page__title">{{ 'customer.account' | t }}</h1>
+    <p style="margin-bottom: 30px;"><a href="{{ routes.account_logout_url }}">{{ 'customer.log_out' | t }}</a></p>
+    <h2 style="margin-bottom: 12px;">{{ 'customer.order_history' | t }}</h2>
+    {%- paginate customer.orders by 20 -%}
+      {%- if customer.orders.size > 0 -%}
+        <table style="width:100%; border-collapse: collapse; font-size: 14px;">
+          <thead><tr style="text-align:left;"><th>{{ 'customer.order' | t }}</th><th>{{ 'customer.date' | t }}</th><th>{{ 'customer.payment_status' | t }}</th><th>{{ 'customer.fulfillment_status' | t }}</th><th>{{ 'customer.total' | t }}</th></tr></thead>
+          <tbody>
+            {%- for order in customer.orders -%}
+              <tr style="border-top: 1px solid rgba(0,0,0,.1);">
+                <td><a href="{{ order.customer_url }}">{{ order.name }}</a></td>
+                <td>{{ order.created_at | date: '%b %d, %Y' }}</td>
+                <td>{{ order.financial_status_label }}</td>
+                <td>{{ order.fulfillment_status_label }}</td>
+                <td>{{ order.total_net_amount | money_with_currency }}</td>
+              </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+      {%- else -%}
+        <p>{{ 'customer.no_orders' | t }}</p>
+      {%- endif -%}
+    {%- endpaginate -%}
+    <h2 style="margin: 30px 0 12px;">{{ 'customer.default_address' | t }}</h2>
+    {{ customer.default_address | format_address }}
+    <p style="margin-top: 12px;"><a href="{{ routes.account_addresses_url }}">{{ 'customer.view_addresses' | t }} ({{ customer.addresses_count }})</a></p>
+  </div>
+</div>

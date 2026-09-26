@@ -1,0 +1,86 @@
+{%- liquid
+  assign p1 = section.settings.product_1 | default: product
+  assign p2 = section.settings.product_2
+  assign v1 = p1.selected_or_first_available_variant
+  assign v2 = p2.selected_or_first_available_variant
+  assign c1 = v1.compare_at_price | default: v1.price
+  assign c2 = v2.compare_at_price | default: v2.price
+  assign total = v1.price | plus: v2.price
+  assign total_compare = c1 | plus: c2
+-%}
+{%- if p2 != blank or request.design_mode -%}
+<div class="bundle-deals-section section-padding" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width">
+    {%- if section.settings.title != blank -%}
+      <h2 class="section-title">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+    <div class="bundle-deals" data-bundle>
+      <div class="bundle-deals__images">
+        <div class="bundle-deals__image">
+          {%- if p1.featured_image != blank -%}
+            {{ p1.featured_image | image_url: width: 500 | image_tag: loading: 'lazy', alt: p1.title }}
+          {%- else -%}
+            {% render 'image-or-placeholder', alt: '' %}
+          {%- endif -%}
+        </div>
+        <span class="bundle-deals__plus" aria-hidden="true">+</span>
+        <div class="bundle-deals__image">
+          {%- if p2.featured_image != blank -%}
+            {{ p2.featured_image | image_url: width: 500 | image_tag: loading: 'lazy', alt: p2.title }}
+          {%- else -%}
+            {% render 'image-or-placeholder', alt: '', placeholder: '2' %}
+          {%- endif -%}
+        </div>
+      </div>
+
+      <ul class="bundle-deals__list" role="list">
+        <li class="bundle-deals__row" data-bundle-item data-variant-id="{{ v1.id }}">
+          <span class="bundle-deals__check">{% render 'icon', icon: 'checkbox' %}</span>
+          <p class="bundle-deals__title">{{ p1.title | default: 'Persian Mouse Mat™' | escape }}</p>
+          <span class="bundle-deals__prices">
+            <span class="bundle-deals__price">{{ v1.price | money }}</span>
+            {%- if c1 > v1.price -%}<s class="bundle-deals__compare-price">{{ c1 | money }}</s>{%- endif -%}
+          </span>
+        </li>
+        <li class="bundle-deals__row" data-bundle-item data-variant-id="{{ v2.id }}">
+          <span class="bundle-deals__check">{% render 'icon', icon: 'checkbox' %}</span>
+          <p class="bundle-deals__title">{{ p2.title | default: section.settings.fallback_title_2 | escape }}</p>
+          <span class="bundle-deals__prices">
+            <span class="bundle-deals__price">{{ v2.price | money }}</span>
+            {%- if c2 > v2.price -%}<s class="bundle-deals__compare-price">{{ c2 | money }}</s>{%- endif -%}
+          </span>
+        </li>
+      </ul>
+
+      <p class="bundle-deals__total">
+        <span>{{ section.settings.total_label | escape }}</span>
+        <span class="bundle-deals__total-price">{{ total | money }}</span>
+        {%- if total_compare > total -%}<s class="bundle-deals__total-compare-price">{{ total_compare | money }}</s>{%- endif -%}
+      </p>
+
+      <button type="button" class="button button--full bundle-deals__button" data-bundle-add>
+        <span>{{ section.settings.button_label | escape }}</span>
+        <span class="button__spinner" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Bundle deal",
+  "class": "section-bundle-deals",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Complete Your Setup" },
+    { "type": "product", "id": "product_1", "label": "Product 1", "info": "Leave empty to use the current product" },
+    { "type": "product", "id": "product_2", "label": "Product 2", "info": "The section is hidden on the live store until this is set" },
+    { "type": "text", "id": "fallback_title_2", "label": "Product 2 placeholder title", "default": "Persian Coaster Set™" },
+    { "type": "text", "id": "total_label", "label": "Total label", "default": "Bundle Price:" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "ADD TO CART" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Top padding", "default": 36 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Bottom padding", "default": 36 }
+  ],
+  "presets": [{ "name": "Bundle deal" }]
+}
+{% endschema %}
