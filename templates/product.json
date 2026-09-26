@@ -3,34 +3,98 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "social_proof": { "type": "social_proof", "settings": { "count": "99+", "bold_text": "orders", "text": "in the last 24h" } },
-        "rating": { "type": "rating", "settings": { "text": "Rated 4.8/5 By 1250+ Customers" } },
-        "title": { "type": "title", "settings": {} },
-        "price": { "type": "price", "settings": { "badge_text": "SAVE [percent]%" } },
+        "social_proof": {
+          "type": "social_proof",
+          "settings": {
+            "count": "99+",
+            "bold_text": "orders",
+            "text": "in the last 24h"
+          }
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {
+            "text": "Rated 4.8/5 By 1250+ Customers"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "badge_text": "SAVE [percent]%"
+          }
+        },
         "benefits": {
           "type": "text",
           "settings": {
             "text": "<p><strong>🏺 Timeless Persian Artistry</strong></p><p><strong>🔥 Instant Desk Upgrade</strong></p><p><strong>💎 Smooth Premium Glide</strong></p><p>💧 <strong>Advanced Waterproof Coating</strong></p><p><strong>📏 Size L: 40×90cm</strong></p>"
           }
         },
-        "variant_picker": { "type": "variant_picker", "settings": {} },
-        "low_stock": { "type": "low_stock", "settings": { "text": "Low Stock" } },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {}
+        },
+        "low_stock": {
+          "type": "low_stock",
+          "settings": {
+            "text": "Low Stock"
+          }
+        },
         "quantity_breaks": {
           "type": "quantity_breaks",
           "settings": {
             "heading": "LIMITED-TIME OFFER",
             "default_option": 2,
-            "qty_1": 1, "label_1": "Buy 1", "caption_1": "FREE SHIPPING", "discount_1": 0, "badge_1": "",
-            "qty_2": 2, "label_2": "Buy 2", "caption_2": "15% OFF + FREE SHIPPING", "discount_2": 15, "badge_2": "Best Seller 🔥",
-            "qty_3": 3, "label_3": "Buy 3", "caption_3": "25% OFF + FREE SHIPPING", "discount_3": 25, "badge_3": ""
+            "qty_1": 1,
+            "label_1": "Buy 1",
+            "caption_1": "FREE SHIPPING",
+            "discount_1": 0,
+            "badge_1": "",
+            "qty_2": 2,
+            "label_2": "Buy 2",
+            "caption_2": "15% OFF + FREE SHIPPING",
+            "discount_2": 15,
+            "badge_2": "Best Seller 🔥",
+            "qty_3": 3,
+            "label_3": "Buy 3",
+            "caption_3": "25% OFF + FREE SHIPPING",
+            "discount_3": 25,
+            "badge_3": ""
           }
         },
-        "upsell": { "type": "upsell", "settings": { "show_placeholder": false } },
-        "buy_buttons": { "type": "buy_buttons", "settings": { "button_label": "ADD TO CART", "show_dynamic_checkout": false } },
-        "secure": { "type": "secure_text", "settings": { "text": "All Transactions Are Secured & Encrypted" } },
+        "upsell": {
+          "type": "upsell",
+          "settings": {
+            "show_placeholder": false
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "button_label": "ADD TO CART",
+            "show_dynamic_checkout": false
+          }
+        },
+        "secure": {
+          "type": "secure_text",
+          "settings": {
+            "text": "All Transactions Are Secured & Encrypted"
+          }
+        },
         "timeline": {
           "type": "shipping_timeline",
-          "settings": { "label_1": "Ordered", "label_2": "Order Ready", "label_3": "Delivered", "ready_min": 1, "ready_max": 2, "delivered_min": 5, "delivered_max": 7 }
+          "settings": {
+            "label_1": "Ordered",
+            "label_2": "Order Ready",
+            "label_3": "Delivered",
+            "ready_min": 1,
+            "ready_max": 2,
+            "delivered_min": 5,
+            "delivered_max": 7
+          }
         },
         "review": {
           "type": "review",
@@ -40,12 +104,37 @@
           }
         }
       },
-      "block_order": ["social_proof", "rating", "title", "price", "benefits", "variant_picker", "low_stock", "quantity_breaks", "upsell", "buy_buttons", "secure", "timeline", "review"],
-      "settings": { "sticky_atc": true, "sticky_badge_text": "SAVE [percent]%" }
+      "block_order": [
+        "social_proof",
+        "rating",
+        "title",
+        "price",
+        "benefits",
+        "variant_picker",
+        "low_stock",
+        "quantity_breaks",
+        "upsell",
+        "buy_buttons",
+        "secure",
+        "timeline",
+        "review"
+      ],
+      "settings": {
+        "sticky_atc": true,
+        "sticky_badge_text": "SAVE [percent]%",
+        "fallback_images": "pdp-01.jpg | Persian Mouse Mat on a wooden desk with a keyboard and mouse\npdp-02.jpg | Persian Mouse Mat in a classic study desk setup\npdp-03.jpg | Persian Mouse Mat desk setup at sunset – Bring Persia to your setup\npdp-04.jpg | Features: anti-slip rubber base, stitched anti-fray edges, smooth tracking surface, 2mm cushioned comfort\npdp-05.jpg | Size guide: 60×30 cm Compact, 80×30 cm Standard, 90×40 cm Full Desk\npdp-06.jpg | Close-up of the stitched edge and woven Persian pattern\npdp-07.jpg | Before and after: plain black desk mat versus the Persian Mouse Mat\npdp-08.jpg | Available Persian rug designs and colourways\npdp-09.jpg | Persian Mouse Mat in different desk setups\npdp-10.jpg | Persian Mouse Mat as a gift with its presentation box"
+      }
     },
     "wave_1": {
       "type": "wave-divider",
-      "settings": { "style": "ribbon", "height": 110, "height_mobile": 55, "color_top": "#ffffff", "color_bottom": "#ffffff", "color_wave": "#5bbc05" }
+      "settings": {
+        "style": "ribbon",
+        "height": 110,
+        "height_mobile": 55,
+        "color_top": "#ffffff",
+        "color_bottom": "#ffffff",
+        "color_wave": "#5bbc05"
+      }
     },
     "bundle": {
       "type": "bundle-deals",
@@ -60,7 +149,15 @@
     },
     "wave_2": {
       "type": "wave-divider",
-      "settings": { "style": "ribbon", "height": 48, "height_mobile": 45, "color_top": "#ffffff", "color_bottom": "#ffffff", "color_wave": "#5bbc05", "flip_x": true }
+      "settings": {
+        "style": "ribbon",
+        "height": 48,
+        "height_mobile": 45,
+        "color_top": "#ffffff",
+        "color_bottom": "#ffffff",
+        "color_wave": "#5bbc05",
+        "flip_x": true
+      }
     },
     "testimonials": {
       "type": "testimonials",
@@ -90,27 +187,87 @@
           }
         }
       },
-      "block_order": ["t1", "t2", "t3"],
-      "settings": { "title": "Loved By Persian Art <strong>Fans Worldwide</strong>", "padding_top": 24, "padding_bottom": 44 }
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "settings": {
+        "title": "Loved By Persian Art <strong>Fans Worldwide</strong>",
+        "padding_top": 24,
+        "padding_bottom": 44
+      }
     },
     "wave_3": {
       "type": "wave-divider",
-      "settings": { "style": "curve", "height": 120, "height_mobile": 60, "color_top": "#ffffff", "color_bottom": "#121212", "color_layer": "#9b9b9b" }
+      "settings": {
+        "style": "curve",
+        "height": 120,
+        "height_mobile": 60,
+        "color_top": "#ffffff",
+        "color_bottom": "#121212",
+        "color_layer": "#9b9b9b"
+      }
     },
     "features": {
       "type": "feature-columns",
       "blocks": {
-        "f1": { "type": "feature", "settings": { "column": "left", "title": "Timeless Persian Design", "text": "Inspired by centuries-old hand-knotted rug patterns, reimagined in rich detail for the modern desk." } },
-        "f2": { "type": "feature", "settings": { "column": "left", "title": "Premium Quality", "text": "Smooth micro-weave surface, anti-slip base, and stitched edges designed for both gaming and everyday use." } },
-        "f3": { "type": "feature", "settings": { "column": "right", "title": "Free Tracked Shipping", "text": "Tracked delivery included on every order so you always know where your package is." } },
-        "f4": { "type": "feature", "settings": { "column": "right", "title": "Perfect Desk Upgrade", "text": "Adds warmth and character to your setup while keeping your workspace clean and comfortable." } }
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "column": "left",
+            "title": "Timeless Persian Design",
+            "text": "Inspired by centuries-old hand-knotted rug patterns, reimagined in rich detail for the modern desk."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "column": "left",
+            "title": "Premium Quality",
+            "text": "Smooth micro-weave surface, anti-slip base, and stitched edges designed for both gaming and everyday use."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "column": "right",
+            "title": "Free Tracked Shipping",
+            "text": "Tracked delivery included on every order so you always know where your package is."
+          }
+        },
+        "f4": {
+          "type": "feature",
+          "settings": {
+            "column": "right",
+            "title": "Perfect Desk Upgrade",
+            "text": "Adds warmth and character to your setup while keeping your workspace clean and comfortable."
+          }
+        }
       },
-      "block_order": ["f1", "f2", "f3", "f4"],
-      "settings": { "title": "🏺 Bring Persian Art <strong>To Your Desk</strong> 🏺", "color_scheme": "dark", "padding_top": 20, "padding_bottom": 40 }
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ],
+      "settings": {
+        "title": "🏺 Bring Persian Art <strong>To Your Desk</strong> 🏺",
+        "color_scheme": "dark",
+        "padding_top": 20,
+        "padding_bottom": 40
+      }
     },
     "wave_4": {
       "type": "wave-divider",
-      "settings": { "style": "curve_down", "height": 120, "height_mobile": 60, "color_top": "#121212", "color_bottom": "#ffffff", "color_layer": "#9b9b9b" }
+      "settings": {
+        "style": "curve_down",
+        "height": 120,
+        "height_mobile": 60,
+        "color_top": "#121212",
+        "color_bottom": "#ffffff",
+        "color_layer": "#9b9b9b"
+      }
     },
     "guarantee": {
       "type": "guarantee",
@@ -125,36 +282,162 @@
     },
     "wave_5": {
       "type": "wave-divider",
-      "settings": { "style": "curve", "height": 120, "height_mobile": 60, "color_top": "#ffffff", "color_bottom": "#000000", "color_layer": "#9b9b9b" }
+      "settings": {
+        "style": "curve",
+        "height": 120,
+        "height_mobile": 60,
+        "color_top": "#ffffff",
+        "color_bottom": "#000000",
+        "color_layer": "#9b9b9b"
+      }
     },
     "faq": {
       "type": "faq",
       "blocks": {
-        "q1": { "type": "question", "settings": { "question": "What if I don’t like it?", "answer": "<p>No worries! If the Persian Mouse Mat™ isn’t everything you hoped for, you can return it within 90 days for a full refund.</p>" } },
-        "q2": { "type": "question", "settings": { "question": "Is the Persian Mouse Mat™ good for gaming and work?", "answer": "<p>Absolutely. The smooth micro-weave surface gives precise tracking for any mouse, and the anti-slip base keeps it firmly in place through long work or gaming sessions.</p>" } },
-        "q3": { "type": "question", "settings": { "question": "Do you offer worldwide shipping?", "answer": "<p>Yes! We ship worldwide with free tracked shipping, so you can follow your order every step of the way.</p>" } },
-        "q4": { "type": "question", "settings": { "question": "Is the Persian Mouse Mat™ a good gift?", "answer": "<p>It makes a beautiful gift for anyone who loves Persian design, cosy desk setups, or a little piece of home at work.</p>" } }
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "What if I don’t like it?",
+            "answer": "<p>No worries! If the Persian Mouse Mat™ isn’t everything you hoped for, you can return it within 90 days for a full refund.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Is the Persian Mouse Mat™ good for gaming and work?",
+            "answer": "<p>Absolutely. The smooth micro-weave surface gives precise tracking for any mouse, and the anti-slip base keeps it firmly in place through long work or gaming sessions.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Do you offer worldwide shipping?",
+            "answer": "<p>Yes! We ship worldwide with free tracked shipping, so you can follow your order every step of the way.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "Is the Persian Mouse Mat™ a good gift?",
+            "answer": "<p>It makes a beautiful gift for anyone who loves Persian design, cosy desk setups, or a little piece of home at work.</p>"
+          }
+        }
       },
-      "block_order": ["q1", "q2", "q3", "q4"],
-      "settings": { "title": "Frequently Asked Questions", "open_first": true, "background": "#000000", "text_color": "#ffffff", "padding_top": 48, "padding_bottom": 60 }
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ],
+      "settings": {
+        "title": "Frequently Asked Questions",
+        "open_first": true,
+        "background": "#000000",
+        "text_color": "#ffffff",
+        "padding_top": 48,
+        "padding_bottom": 60
+      }
     },
     "wave_6": {
       "type": "wave-divider",
-      "settings": { "style": "curve_down", "height": 90, "height_mobile": 50, "color_top": "#000000", "color_bottom": "#ffffff", "color_layer": "#9b9b9b" }
+      "settings": {
+        "style": "curve_down",
+        "height": 90,
+        "height_mobile": 50,
+        "color_top": "#000000",
+        "color_bottom": "#ffffff",
+        "color_layer": "#9b9b9b"
+      }
     },
     "reviews": {
       "type": "product-reviews",
       "blocks": {
-        "r1": { "type": "review", "settings": { "rating": 5, "author": "Customer Name", "verified": "shop", "text": "Replace these sample entries with your real product reviews, or add a reviews app block (Judge.me, Loox, etc.) to this section and delete them.", "source": "Review written in Shop App" } },
-        "r2": { "type": "review", "settings": { "rating": 5, "author": "Customer Name", "verified": "shop", "text": "Sample review text.", "source": "Review written in Shop App" } },
-        "r3": { "type": "review", "settings": { "rating": 5, "author": "Customer Name", "verified": "none", "text": "Sample review text — longer reviews wrap onto a second line like this one does, which is how most real reviews will look." } },
-        "r4": { "type": "review", "settings": { "rating": 5, "author": "Customer Name", "verified": "none", "text": "Sample review text — each review can have its own star rating, name, verified badge, source line and customer photo." } },
-        "r5": { "type": "review", "settings": { "rating": 5, "author": "Customer Name", "verified": "buyer", "text": "Sample review text." } },
-        "r6": { "type": "review", "settings": { "rating": 5, "author": "Customer Name", "verified": "buyer", "text": "Sample review text on page two." } }
+        "r1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "author": "Customer Name",
+            "verified": "shop",
+            "text": "Replace these sample entries with your real product reviews, or add a reviews app block (Judge.me, Loox, etc.) to this section and delete them.",
+            "source": "Review written in Shop App"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "author": "Customer Name",
+            "verified": "shop",
+            "text": "Sample review text.",
+            "source": "Review written in Shop App"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "author": "Customer Name",
+            "verified": "none",
+            "text": "Sample review text — longer reviews wrap onto a second line like this one does, which is how most real reviews will look."
+          }
+        },
+        "r4": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "author": "Customer Name",
+            "verified": "none",
+            "text": "Sample review text — each review can have its own star rating, name, verified badge, source line and customer photo."
+          }
+        },
+        "r5": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "author": "Customer Name",
+            "verified": "buyer",
+            "text": "Sample review text."
+          }
+        },
+        "r6": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "author": "Customer Name",
+            "verified": "buyer",
+            "text": "Sample review text on page two."
+          }
+        }
       },
-      "block_order": ["r1", "r2", "r3", "r4", "r5", "r6"],
-      "settings": { "title": "Customer Reviews", "per_page": 5, "padding_top": 60, "padding_bottom": 48 }
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6"
+      ],
+      "settings": {
+        "title": "Customer Reviews",
+        "per_page": 5,
+        "padding_top": 60,
+        "padding_bottom": 48
+      }
     }
   },
-  "order": ["main", "wave_1", "bundle", "wave_2", "testimonials", "wave_3", "features", "wave_4", "guarantee", "wave_5", "faq", "wave_6", "reviews"]
+  "order": [
+    "main",
+    "wave_1",
+    "bundle",
+    "wave_2",
+    "testimonials",
+    "wave_3",
+    "features",
+    "wave_4",
+    "guarantee",
+    "wave_5",
+    "faq",
+    "wave_6",
+    "reviews"
+  ]
 }

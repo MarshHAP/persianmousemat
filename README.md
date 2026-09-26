@@ -73,8 +73,15 @@ shopify theme dev --store your-store.myshopify.com
 
 ## Images to supply
 
-Until you add real images, every image slot shows a generated Persian-rug
-placeholder (`assets/pm-placeholder-rug*.svg`).
+**Product gallery: done.** The 10 PDP images live in `source-images/pdp/`
+(originals) and `assets/pdp-NN.jpg` (web-optimised, plus `-750` and `-thumb`
+sizes). The product page shows them until the Shopify product has media of its
+own. After that, upload the same photos to the product in admin, since
+product media gets Shopify's image CDN and variant switching. The list and alt
+text are in the *Product information* section → **Theme gallery images**.
+
+Every other image slot still shows a generated Persian-rug placeholder
+(`assets/pm-placeholder-rug*.svg`).
 
 | Where | Setting | Suggested size |
 |-------|---------|----------------|

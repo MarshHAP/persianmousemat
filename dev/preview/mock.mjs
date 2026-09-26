@@ -29,15 +29,19 @@ const variant = {
   featured_media: null,
 };
 
+// No media: like a freshly created product, so the gallery uses the theme's bundled pdp-NN.jpg photos.
+// Set PREVIEW_PLACEHOLDER_MEDIA=1 to preview with the rug placeholders as product media instead.
+const withMedia = process.env.PREVIEW_PLACEHOLDER_MEDIA === '1';
+
 export const product = {
   id: 9001,
   title: 'Persian Mouse Mat™',
   handle: 'persian-mouse-mat',
   url: '/products/persian-mouse-mat',
   price: 2999,
-  media,
-  featured_media: media[0],
-  featured_image: media[0].preview_image,
+  media: withMedia ? media : [],
+  featured_media: withMedia ? media[0] : null,
+  featured_image: withMedia ? media[0].preview_image : { src: '/assets/pdp-01-750.jpg', width: 750, height: 750, alt: 'Persian Mouse Mat' },
   variants: [variant],
   selected_or_first_available_variant: variant,
   has_only_default_variant: true,

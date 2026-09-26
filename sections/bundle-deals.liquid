@@ -20,7 +20,8 @@
           {%- if p1.featured_image != blank -%}
             {{ p1.featured_image | image_url: width: 500 | image_tag: loading: 'lazy', alt: p1.title }}
           {%- else -%}
-            {% render 'image-or-placeholder', alt: '' %}
+            {%- comment -%} Product has no photos yet: use the bundled hero shot. {%- endcomment -%}
+            <img src="{{ 'pdp-01-750.jpg' | asset_url }}" width="750" height="750" alt="{{ p1.title | escape }}" loading="lazy">
           {%- endif -%}
         </div>
         <span class="bundle-deals__plus" aria-hidden="true">+</span>

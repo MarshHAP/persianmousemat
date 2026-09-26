@@ -3,6 +3,16 @@
   assign form_id = 'product-form-' | append: section.id
   assign upsell = settings.upsell_product
   assign featured = product.featured_media
+
+  comment
+    Until the product has its own media, the gallery shows photos bundled
+    with the theme (assets/pdp-NN.jpg). One per line: file | alt text.
+  endcomment
+  assign fallback_images = section.settings.fallback_images | strip | newline_to_br | split: '<br />'
+  assign use_fallback = false
+  if product.media.size == 0 and section.settings.fallback_images != blank
+    assign use_fallback = true
+  endif
 -%}
 
 <product-page
@@ -35,6 +45,32 @@
                   {%- endcase -%}
                 </li>
               {%- endfor -%}
+            {%- elsif use_fallback -%}
+              {%- for line in fallback_images -%}
+                {%- liquid
+                  assign parts = line | split: '|'
+                  assign file = parts[0] | strip
+                  assign alt = parts[1] | strip | default: product.title
+                  assign base = file | split: '.' | first
+                  if forloop.first
+                    assign ld = 'eager'
+                  else
+                    assign ld = 'lazy'
+                  endif
+                -%}
+                <li class="product-gallery__slide{% if forloop.first %} is-active{% endif %}" data-index="{{ forloop.index0 }}">
+                  <img
+                    src="{{ file | asset_url }}"
+                    srcset="{{ base | append: '-750.jpg' | asset_url }} 750w, {{ file | asset_url }} 1254w"
+                    sizes="(min-width: 990px) 715px, 100vw"
+                    width="1254"
+                    height="1254"
+                    alt="{{ alt | escape }}"
+                    loading="{{ ld }}"
+                    class="product-gallery__img"
+                  >
+                </li>
+              {%- endfor -%}
             {%- else -%}
               <li class="product-gallery__slide is-active" data-index="0">
                 {% render 'image-or-placeholder', class: 'product-gallery__img', alt: product.title, loading: 'eager' %}
@@ -57,6 +93,15 @@
                     <li>
                       <button type="button" class="product-gallery__thumb{% if media.id == featured.id %} is-active{% endif %}" data-thumb-index="{{ forloop.index0 }}" aria-label="{{ 'products.product.media_thumb' | t: index: forloop.index }}">
                         {{ media.preview_image | image_url: width: 240 | image_tag: loading: 'lazy', alt: '' }}
+                      </button>
+                    </li>
+                  {%- endfor -%}
+                {%- elsif use_fallback -%}
+                  {%- for line in fallback_images -%}
+                    {%- assign base = line | split: '|' | first | strip | split: '.' | first -%}
+                    <li>
+                      <button type="button" class="product-gallery__thumb{% if forloop.first %} is-active{% endif %}" data-thumb-index="{{ forloop.index0 }}" aria-label="{{ 'products.product.media_thumb' | t: index: forloop.index }}">
+                        <img src="{{ base | append: '-thumb.jpg' | asset_url }}" width="240" height="240" alt="" loading="lazy">
                       </button>
                     </li>
                   {%- endfor -%}
@@ -305,6 +350,9 @@
           <span class="sticky-atc__thumb">
             {%- if featured != blank -%}
               {{ featured.preview_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' }}
+            {%- elsif use_fallback -%}
+              {%- assign base = fallback_images.first | split: '|' | first | strip | split: '.' | first -%}
+              <img src="{{ base | append: '-thumb.jpg' | asset_url }}" width="240" height="240" alt="" loading="lazy">
             {%- else -%}
               {% render 'image-or-placeholder', alt: '' %}
             {%- endif -%}
@@ -338,6 +386,12 @@
   "tag": "section",
   "class": "section-main-product",
   "settings": [
+    {
+      "type": "textarea",
+      "id": "fallback_images",
+      "label": "Theme gallery images",
+      "info": "Shown only while the product has no media of its own. One per line: asset file | alt text. Each file needs -750.jpg and -thumb.jpg versions in assets/."
+    },
     { "type": "checkbox", "id": "sticky_atc", "label": "Show sticky add-to-cart bar", "default": true },
     { "type": "text", "id": "sticky_badge_text", "label": "Sticky bar badge text", "default": "SAVE [percent]%" }
   ],

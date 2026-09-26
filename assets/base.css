@@ -523,7 +523,7 @@ s { text-decoration-thickness: 2px; }
 .bundle-deals { max-width: 450px; margin: 0 auto; }
 .bundle-deals__images { display: flex; align-items: center; justify-content: center; gap: 10px; }
 .bundle-deals__image { flex: 1; max-width: 205px; }
-.bundle-deals__image img { width: 100%; aspect-ratio: 205 / 120; object-fit: contain; }
+.bundle-deals__image img { width: 100%; aspect-ratio: 205 / 120; object-fit: cover; border-radius: 6px; }
 .bundle-deals__plus { font-size: 20px; font-weight: 900; color: var(--text); }
 .bundle-deals__list { margin-top: 18px !important; }
 .bundle-deals__row { display: flex; align-items: center; gap: 10px; padding: 3px 0; }
