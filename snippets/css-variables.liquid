@@ -1,5 +1,6 @@
 {%- liquid
-  assign accent = settings.color_accent | default: '#5bbc05'
+  assign accent = settings.color_accent | default: '#8b2718'
+  assign accent_dark = settings.color_accent_dark | default: '#5e1a0f'
   assign text = settings.color_text | default: '#121212'
   assign font = settings.type_font
   assign font_500 = font | font_modify: 'weight', '500'
@@ -23,13 +24,12 @@
   :root {
     --accent: {{ accent }};
     --accent-rgb: {{ accent.red }}, {{ accent.green }}, {{ accent.blue }};
+    --accent-dark: {{ accent_dark }};
     --text: {{ text }};
     --text-rgb: {{ text.red }}, {{ text.green }}, {{ text.blue }};
     --bg: {{ settings.color_background | default: '#ffffff' }};
     --dark: {{ settings.color_dark | default: '#121212' }};
     --card: {{ settings.color_card | default: '#f5f5f5' }};
-    --stars: {{ settings.color_stars | default: '#ffcc00' }};
-    --dot: {{ settings.color_sale_dot | default: '#ff0000' }};
     --font: {{ font.family }}, {{ font.fallback_families }};
     --logo-w: {{ settings.logo_width | default: 160 }}px;
     --logo-w-m: {{ settings.logo_width_mobile | default: 110 }}px;

@@ -30,7 +30,7 @@
         "benefits": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>🏺 Timeless Persian Artistry</strong></p><p><strong>🔥 Instant Desk Upgrade</strong></p><p><strong>💎 Smooth Premium Glide</strong></p><p>💧 <strong>Advanced Waterproof Coating</strong></p><p><strong>📏 Size L: 40×90cm</strong></p>"
+            "text": "<p><strong>Timeless Persian Artistry</strong></p><p><strong>Instant Desk Upgrade</strong></p><p><strong>Smooth Premium Glide</strong></p><p><strong>Advanced Waterproof Coating</strong></p><p><strong>Size L: 40×90cm</strong></p>"
           }
         },
         "variant_picker": {
@@ -57,7 +57,7 @@
             "label_2": "Buy 2",
             "caption_2": "15% OFF + FREE SHIPPING",
             "discount_2": 15,
-            "badge_2": "Best Seller 🔥",
+            "badge_2": "Best Seller",
             "qty_3": 3,
             "label_3": "Buy 3",
             "caption_3": "25% OFF + FREE SHIPPING",
@@ -132,8 +132,7 @@
         "height": 110,
         "height_mobile": 55,
         "color_top": "#ffffff",
-        "color_bottom": "#ffffff",
-        "color_wave": "#5bbc05"
+        "color_bottom": "#ffffff"
       }
     },
     "bundle": {
@@ -155,7 +154,6 @@
         "height_mobile": 45,
         "color_top": "#ffffff",
         "color_bottom": "#ffffff",
-        "color_wave": "#5bbc05",
         "flip_x": true
       }
     },
@@ -252,7 +250,7 @@
         "f4"
       ],
       "settings": {
-        "title": "🏺 Bring Persian Art <strong>To Your Desk</strong> 🏺",
+        "title": "Bring Persian Art <strong>To Your Desk</strong>",
         "color_scheme": "dark",
         "padding_top": 20,
         "padding_bottom": 40

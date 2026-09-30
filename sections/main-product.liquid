@@ -164,7 +164,7 @@
               </div>
 
             {%- when 'text' -%}
-              <div class="product__text rte" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+              <div class="product__text rte{% if block.settings.show_markers %} product__text--markers{% endif %}" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
 
             {%- when 'variant_picker' -%}
               {%- unless product.has_only_default_variant -%}
@@ -331,7 +331,7 @@
                 </span>
                 <div class="mini-review__body">
                   <p>{{ block.settings.text | escape }}</p>
-                  <div class="mini-review__author">{{ block.settings.author | escape }} ⭐️⭐️⭐️⭐️⭐️</div>
+                  <div class="mini-review__author">{{ block.settings.author | escape }} <span class="mini-review__stars" aria-label="5/5">{%- for i in (1..5) -%}{% render 'icon', icon: 'star' %}{%- endfor -%}</span></div>
                 </div>
               </div>
 
@@ -431,7 +431,8 @@
       "type": "text",
       "name": "Text / benefits",
       "settings": [
-        { "type": "richtext", "id": "text", "label": "Text", "default": "<p><strong>🥹 Pure Nostalgia</strong></p>" }
+        { "type": "richtext", "id": "text", "label": "Text", "default": "<p><strong>Timeless Persian Artistry</strong></p>" },
+        { "type": "checkbox", "id": "show_markers", "label": "Show ◆ marker before each line", "default": true }
       ]
     },
     { "type": "variant_picker", "name": "Variant picker", "limit": 1 },
@@ -462,7 +463,7 @@
         { "type": "text", "id": "label_2", "label": "Label", "default": "Buy 2" },
         { "type": "text", "id": "caption_2", "label": "Caption", "default": "15% OFF + FREE SHIPPING" },
         { "type": "number", "id": "discount_2", "label": "Discount %", "default": 15 },
-        { "type": "text", "id": "badge_2", "label": "Badge", "default": "Best Seller 🔥" },
+        { "type": "text", "id": "badge_2", "label": "Badge", "default": "Best Seller" },
         { "type": "header", "content": "Option 3" },
         { "type": "number", "id": "qty_3", "label": "Quantity (0 hides)", "default": 3 },
         { "type": "text", "id": "label_3", "label": "Label", "default": "Buy 3" },

@@ -1,7 +1,7 @@
 {%- assign d = days | default: 90 -%}
 <svg class="guarantee-seal" viewBox="0 0 200 200" role="img" aria-label="{{ d }} days money back guarantee">
   <defs>
-    <linearGradient id="gs-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fd13f"/><stop offset="1" stop-color="#4a9a06"/></linearGradient>
+    <linearGradient id="gs-g" x1="0" y1="0" x2="0" y2="1"><stop style="stop-color: var(--accent)" offset="0"/><stop style="stop-color: var(--accent-dark)" offset="1"/></linearGradient>
     <path id="gs-top" d="M45 100a55 55 0 0 1 110 0"/>
     <path id="gs-bot" d="M42 100a58 58 0 0 0 116 0"/>
     <radialGradient id="gs-shadow"><stop offset="0" stop-color="#000" stop-opacity=".25"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
@@ -18,7 +18,7 @@
   <text style="font-family: var(--font)" font-weight="800" font-size="17" fill="#fff" letter-spacing="1"><textPath href="#gs-top" startOffset="50%" text-anchor="middle">MONEY BACK</textPath></text>
   <text style="font-family: var(--font)" font-weight="800" font-size="15" fill="#fff" letter-spacing="1" dy="14"><textPath href="#gs-bot" startOffset="50%" text-anchor="middle">GUARANTEE</textPath></text>
   <rect x="18" y="80" width="164" height="42" fill="#fff"/>
-  <rect x="22" y="84" width="156" height="34" fill="#4a9a06"/>
+  <rect style="fill: var(--accent-dark)" x="22" y="84" width="156" height="34"/>
   <text x="100" y="112" style="font-family: var(--font)" font-weight="900" font-size="30" fill="#fff" text-anchor="middle">{{ d }} DAYS</text>
   <text x="100" y="72" style="font-family: var(--font)" font-size="12" fill="#fff" text-anchor="middle">★ ★ ★</text>
   <text x="100" y="140" style="font-family: var(--font)" font-size="12" fill="#fff" text-anchor="middle">★ ★ ★</text>

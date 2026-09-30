@@ -4,7 +4,7 @@
 {%- endcomment -%}
 <div
   class="countdown-bar"
-  style="--cb-bg: {{ section.settings.background }}; --cb-text: {{ section.settings.text_color }}; --cb-box: {{ section.settings.box_color }}; --cb-num: {{ section.settings.number_color }};"
+  style="--cb-bg: {{ section.settings.background | default: '#000000' }}; --cb-text: {{ section.settings.text_color | default: '#ffffff' }}; --cb-box: {{ section.settings.box_color | default: settings.color_accent }}; --cb-num: {{ section.settings.number_color | default: '#ffffff' }};"
 >
   <div class="countdown-bar__inner">
     <div class="countdown-bar__text">{{ section.settings.text | escape }}</div>
@@ -40,9 +40,9 @@
     },
     { "type": "text", "id": "end_date", "label": "End date", "info": "Used with \"Fixed end date\". Format: 2026-12-31 23:59" },
     { "type": "color", "id": "background", "label": "Background", "default": "#000000" },
-    { "type": "color", "id": "text_color", "label": "Text color", "default": "#5bbc05" },
-    { "type": "color", "id": "box_color", "label": "Number box color", "default": "#5bbc05" },
-    { "type": "color", "id": "number_color", "label": "Number color", "default": "#000000" }
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#ffffff" },
+    { "type": "color", "id": "box_color", "label": "Number box color", "info": "Leave empty to use the theme accent" },
+    { "type": "color", "id": "number_color", "label": "Number color", "default": "#ffffff" }
   ],
   "presets": [{ "name": "Countdown bar" }]
 }

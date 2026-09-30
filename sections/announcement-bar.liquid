@@ -1,7 +1,7 @@
 {%- comment -%} Rotating announcement messages with a megaphone icon. {%- endcomment -%}
 <div
   class="announcement-bar"
-  style="--ab-bg: {{ section.settings.background }}; --ab-text: {{ section.settings.text_color }};"
+  style="--ab-bg: {{ section.settings.background | default: settings.color_accent_dark }}; --ab-text: {{ section.settings.text_color | default: '#ffffff' }};"
   role="region"
   aria-label="{{ 'sections.announcement.label' | t }}"
 >
@@ -32,7 +32,7 @@
   "settings": [
     { "type": "checkbox", "id": "show_icon", "label": "Show megaphone icon", "default": true },
     { "type": "range", "id": "speed", "min": 2, "max": 10, "step": 1, "unit": "s", "label": "Change every", "default": 4 },
-    { "type": "color", "id": "background", "label": "Background", "default": "#5bbc05" },
+    { "type": "color", "id": "background", "label": "Background", "info": "Leave empty to use the theme's deep accent shade" },
     { "type": "color", "id": "text_color", "label": "Text", "default": "#ffffff" }
   ],
   "blocks": [

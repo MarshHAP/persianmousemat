@@ -5,6 +5,12 @@ single-product "funnel" store whose layout mirrors the reference store
 (memorymat.shop) section for section, re-skinned with Persian Mouse Mat copy.
 Every piece of text, colour and image can be edited in the Shopify theme editor.
 
+**Colour.** The only accent is the dark red `#8b2718`, taken from
+orientalis.co, plus a deeper shade `#5e1a0f` for the announcement bars and
+button hovers. Everything else is black, white or grey. Both are set under
+**Theme settings → Colors**. The section colour pickers are left empty so they
+follow these two settings; changing the accent there updates the whole store.
+
 ## Page layout
 
 **Product page** (`templates/product.json`), top to bottom:
@@ -12,10 +18,10 @@ Every piece of text, colour and image can be edited in the Shopify theme editor.
 | # | Section | File |
 |---|---------|------|
 | 1 | Black countdown bar ("… SALE ENDS IN 00 12 18 50") | `sections/countdown-bar.liquid` |
-| 2 | Green rotating announcement bar (megaphone icon) | `sections/announcement-bar.liquid` |
-| 3 | Header: menu on the left (current page shown as a green pill), logo in the centre, account and cart on the right. Hamburger menu on mobile | `sections/header.liquid` |
+| 2 | Deep-red rotating announcement bar (megaphone icon) | `sections/announcement-bar.liquid` |
+| 3 | Header: menu on the left (current page shown as a red pill), logo in the centre, account and cart on the right. Hamburger menu on mobile | `sections/header.liquid` |
 | 4 | Product hero: sticky gallery with thumbnails; buy box with orders pill, rating, title, price and SAVE badge, benefits, low-stock dot, Buy 1/2/3 quantity breaks, priority-processing toggle, add to cart, secure-checkout line, delivery timeline and mini review; sticky add-to-cart bar | `sections/main-product.liquid` |
-| 5 | Green ribbon wave | `sections/wave-divider.liquid` |
+| 5 | Red ribbon wave | `sections/wave-divider.liquid` |
 | 6 | "Complete Your Setup" bundle | `sections/bundle-deals.liquid` |
 | 7 | Three testimonial cards (a slider on mobile) | `sections/testimonials.liquid` |
 | 8 | Dark band: two features, a portrait image or video, two more features | `sections/feature-columns.liquid` |
@@ -25,7 +31,7 @@ Every piece of text, colour and image can be edited in the Shopify theme editor.
 | 12 | Black footer: link menu, logo, mission text, country selector, payment icons | `sections/footer.liquid` |
 
 The homepage (`templates/index.json`) has a hero image with a dark "claim offer"
-box, followed by a green offer bar. The cart drawer includes a "cart reserved"
+box, followed by a red offer bar. The cart drawer includes a "cart reserved"
 timer and the priority-processing upsell toggle. The theme also includes
 collection, cart, search, page, contact, blog, article, 404, password,
 gift-card and customer-account templates.
