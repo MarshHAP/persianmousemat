@@ -204,15 +204,20 @@
                     assign ck = 'caption_' | append: i
                     assign dk = 'discount_' | append: i
                     assign bk = 'badge_' | append: i
+                    assign tk = 'total_' | append: i
                     assign qty = block.settings[qk]
+                    assign fixed_total = block.settings[tk] | strip
                     assign discount = block.settings[dk]
                     assign line_price = current_variant.price | times: qty
                     assign keep = 100 | minus: discount
                     assign line_price = line_price | times: keep | divided_by: 100
+                    if fixed_total != blank
+                      assign line_price = fixed_total | remove: '£' | times: 100 | round
+                    endif
                     assign line_compare = current_variant.compare_at_price | default: current_variant.price | times: qty
                   -%}
                   {%- if qty > 0 -%}
-                    <label class="quantity-break{% if block.settings.default_option == i %} is-selected{% endif %}" data-qty="{{ qty }}" data-discount="{{ discount }}">
+                    <label class="quantity-break{% if block.settings.default_option == i %} is-selected{% endif %}" data-qty="{{ qty }}" data-discount="{{ discount }}"{% if fixed_total != blank %} data-total="{{ line_price }}"{% endif %}>
                       <input type="radio" name="qb-{{ section.id }}" value="{{ qty }}"{% if block.settings.default_option == i %} checked{% endif %}>
                       <span class="quantity-break__radio" aria-hidden="true"></span>
                       <span class="quantity-break__content">
@@ -449,7 +454,7 @@
       "name": "Quantity breaks",
       "limit": 1,
       "settings": [
-        { "type": "paragraph", "content": "Displayed prices apply the discount below. Create a matching Shopify automatic volume discount (Discounts > Amount off products > minimum quantity) so the checkout price matches." },
+        { "type": "paragraph", "content": "Displayed prices use each option's fixed price if set, otherwise its discount %. Create a matching Shopify automatic discount so the checkout price matches." },
         { "type": "text", "id": "heading", "label": "Heading", "default": "LIMITED-TIME OFFER" },
         { "type": "range", "id": "default_option", "min": 1, "max": 3, "step": 1, "label": "Selected by default", "default": 2 },
         { "type": "header", "content": "Option 1" },
@@ -457,18 +462,21 @@
         { "type": "text", "id": "label_1", "label": "Label", "default": "Buy 1" },
         { "type": "text", "id": "caption_1", "label": "Caption", "default": "FREE SHIPPING" },
         { "type": "number", "id": "discount_1", "label": "Discount %", "default": 0 },
+        { "type": "text", "id": "total_1", "label": "Fixed total price (overrides discount)", "info": "In store currency, e.g. 29.99" },
         { "type": "text", "id": "badge_1", "label": "Badge" },
         { "type": "header", "content": "Option 2" },
         { "type": "number", "id": "qty_2", "label": "Quantity", "default": 2 },
         { "type": "text", "id": "label_2", "label": "Label", "default": "Buy 2" },
         { "type": "text", "id": "caption_2", "label": "Caption", "default": "15% OFF + FREE SHIPPING" },
         { "type": "number", "id": "discount_2", "label": "Discount %", "default": 15 },
+        { "type": "text", "id": "total_2", "label": "Fixed total price (overrides discount)", "info": "In store currency, e.g. 29.99" },
         { "type": "text", "id": "badge_2", "label": "Badge", "default": "Best Seller" },
         { "type": "header", "content": "Option 3" },
         { "type": "number", "id": "qty_3", "label": "Quantity (0 hides)", "default": 3 },
         { "type": "text", "id": "label_3", "label": "Label", "default": "Buy 3" },
         { "type": "text", "id": "caption_3", "label": "Caption", "default": "25% OFF + FREE SHIPPING" },
         { "type": "number", "id": "discount_3", "label": "Discount %", "default": 25 },
+        { "type": "text", "id": "total_3", "label": "Fixed total price (overrides discount)", "info": "In store currency, e.g. 29.99" },
         { "type": "text", "id": "badge_3", "label": "Badge" }
       ]
     },

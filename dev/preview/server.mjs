@@ -54,7 +54,7 @@ const state = {
     collection: { title: 'All products', products: [mock.product, mock.coasterProduct] },
     collections: [{ title: 'All products', url: '/collections/all', featured_image: mock.product.featured_image }],
     request: { locale: { iso_code: 'en' }, page_type: 'product', design_mode: false, origin: 'http://localhost' },
-    page_title: 'Persian Mouse Mat™',
+    page_title: 'The Persian Mouse Mat',
     canonical_url: 'http://localhost/',
     content_for_header: '',
     customer: null,

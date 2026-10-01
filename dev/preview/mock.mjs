@@ -22,8 +22,8 @@ const media = [1, 2, 3, 4, 5, 6].map((n) => ({
 const variant = {
   id: 44001,
   title: 'Default Title',
-  price: 2999,
-  compare_at_price: 4285,
+  price: 1999,
+  compare_at_price: null,
   available: true,
   options: ['Default Title'],
   featured_media: null,
@@ -35,10 +35,10 @@ const withMedia = process.env.PREVIEW_PLACEHOLDER_MEDIA === '1';
 
 export const product = {
   id: 9001,
-  title: 'Persian Mouse Mat™',
+  title: 'The Persian Mouse Mat',
   handle: 'persian-mouse-mat',
   url: '/products/persian-mouse-mat',
-  price: 2999,
+  price: 1999,
   media: withMedia ? media : [],
   featured_media: withMedia ? media[0] : null,
   featured_image: withMedia ? media[0].preview_image : { src: '/assets/pdp-01-750.jpg', width: 750, height: 750, alt: 'Persian Mouse Mat' },
@@ -69,7 +69,7 @@ export const catalog = { 44001: product, 44002: upsellProduct, 44003: coasterPro
 export const linklists = {
   'main-menu': {
     links: [
-      { title: 'Persian Mouse Mat™', url: '/products/persian-mouse-mat', current: true },
+      { title: 'The Persian Mouse Mat', url: '/products/persian-mouse-mat', current: true },
       { title: 'Track Your Order', url: '/pages/track-your-order' },
       { title: 'Contact', url: '/pages/contact' },
     ],

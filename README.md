@@ -3,7 +3,7 @@
 A custom Shopify Online Store 2.0 theme for The Persian Office brand. It is a
 single-product "funnel" store whose layout mirrors the reference store
 (memorymat.shop) section for section, re-skinned for The Persian Office.
-The store's product is the Persian Mouse Mat™. Every piece of text, colour and image can be edited in the Shopify theme editor.
+The store's product is The Persian Mouse Mat. Every piece of text, colour and image can be edited in the Shopify theme editor.
 
 **Colour.** The only accent is the dark red `#8b2718`, taken from
 orientalis.co, plus a deeper shade `#5e1a0f` for the announcement bars and
@@ -58,11 +58,13 @@ shopify theme dev --store your-store.myshopify.com
 
 ## Store setup checklist
 
-1. **Product.** Create "Persian Mouse Mat™" with a sale price and a
-   compare-at price. The SAVE % badge and the quantity-break prices are
-   calculated from these.
+1. **Product.** "The Persian Mouse Mat" (£19.99, or 2 for £29.99) already
+   exists as a draft in the store — see *Product & pricing* below. If you
+   recreate it, give it a price and, optionally, a genuine compare-at
+   price. The SAVE % badge and the quantity-break prices are calculated
+   from these.
 2. **Menus** (Online Store → Navigation):
-   - `main-menu`: Persian Mouse Mat™ (links to the product), Track Your Order, Contact.
+   - `main-menu`: The Persian Mouse Mat (links to the product), Track Your Order, Contact.
    - `footer`: About Us, Shipping & Delivery, Returns & Refunds, Privacy Policy, Terms of Service, Contact.
 3. **Quantity-break discounts.** The Buy 2 (15% off) and Buy 3 (25% off)
    prices are only displayed by the theme. To charge them at checkout, create

@@ -37,7 +37,7 @@
       <ul class="bundle-deals__list" role="list">
         <li class="bundle-deals__row" data-bundle-item data-variant-id="{{ v1.id }}">
           <span class="bundle-deals__check">{% render 'icon', icon: 'checkbox' %}</span>
-          <p class="bundle-deals__title">{{ p1.title | default: 'Persian Mouse Mat™' | escape }}</p>
+          <p class="bundle-deals__title">{{ p1.title | default: 'The Persian Mouse Mat' | escape }}</p>
           <span class="bundle-deals__prices">
             <span class="bundle-deals__price">{{ v1.price | money }}</span>
             {%- if c1 > v1.price -%}<s class="bundle-deals__compare-price">{{ c1 | money }}</s>{%- endif -%}

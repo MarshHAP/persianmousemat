@@ -55,14 +55,17 @@
             "badge_1": "",
             "qty_2": 2,
             "label_2": "Buy 2",
-            "caption_2": "15% OFF + FREE SHIPPING",
-            "discount_2": 15,
-            "badge_2": "Best Seller",
-            "qty_3": 3,
-            "label_3": "Buy 3",
-            "caption_3": "25% OFF + FREE SHIPPING",
-            "discount_3": 25,
-            "badge_3": ""
+            "caption_2": "SAVE £9.99 + FREE SHIPPING",
+            "discount_2": 0,
+            "badge_2": "Best Value",
+            "qty_3": 0,
+            "label_3": "",
+            "caption_3": "",
+            "discount_3": 0,
+            "badge_3": "",
+            "total_1": "",
+            "total_2": "29.99",
+            "total_3": ""
           }
         },
         "upsell": {
@@ -122,7 +125,7 @@
       "settings": {
         "sticky_atc": true,
         "sticky_badge_text": "SAVE [percent]%",
-        "fallback_images": "pdp-01.jpg | Persian Mouse Mat on a wooden desk with a keyboard and mouse\npdp-02.jpg | Persian Mouse Mat in a classic study desk setup\npdp-03.jpg | Persian Mouse Mat desk setup at sunset – Bring Persia to your setup\npdp-04.jpg | Features: anti-slip rubber base, stitched anti-fray edges, smooth tracking surface, 2mm cushioned comfort\npdp-05.jpg | Size guide: 60×30 cm Compact, 80×30 cm Standard, 90×40 cm Full Desk\npdp-06.jpg | Close-up of the stitched edge and woven Persian pattern\npdp-07.jpg | Before and after: plain black desk mat versus the Persian Mouse Mat\npdp-08.jpg | Available Persian rug designs and colourways\npdp-09.jpg | Persian Mouse Mat in different desk setups\npdp-10.jpg | Persian Mouse Mat as a gift with its presentation box"
+        "fallback_images": "pdp-01.jpg | The Persian Mouse Mat on a wooden desk with a keyboard and mouse\nlife-01.jpg | Crimson Persian Mouse Mat in a bright morning workspace\npdp-02.jpg | The Persian Mouse Mat in a classic study desk setup\nlife-02.jpg | Midnight floral Persian Mouse Mat in a gaming setup\npdp-03.jpg | Persian Mouse Mat desk setup at sunset – Bring Persia to your setup\nlife-03.jpg | Red-and-white geometric Persian Mouse Mat on a study desk on a rainy day\npdp-04.jpg | Features: anti-slip rubber base, stitched anti-fray edges, smooth tracking surface, 2mm cushioned comfort\nlife-04.jpg | Blue floral Persian Mouse Mat on a designer's desk\npdp-05.jpg | Size guide: 60×30 cm Compact, 80×30 cm Standard, 90×40 cm Full Desk\nlife-05.jpg | Burnt orange Persian Mouse Mat on a cosy reading desk\npdp-06.jpg | Close-up of the stitched edge and woven Persian pattern\nlife-06.jpg | A tabby cat stretched out on a Persian Mouse Mat\npdp-07.jpg | Before and after: plain black desk mat versus the Persian Mouse Mat\nlife-07.jpg | Red-and-white geometric Persian Mouse Mat desk setup\npdp-08.jpg | Available Persian rug designs and colourways\nlife-08.jpg | Blue floral Persian Mouse Mat in a late-night music studio\nlife-09.jpg | Crimson Persian Mouse Mat in a kitchen nook\npdp-10.jpg | The Persian Mouse Mat as a gift with its presentation box\nlife-10.jpg | Burnt orange Persian Mouse Mat at a coworking table"
       }
     },
     "wave_1": {
@@ -271,7 +274,7 @@
       "type": "guarantee",
       "settings": {
         "title": "Persian Craft Guarantee",
-        "text": "<p>We’re confident the Persian Mouse Mat™ will turn your desk into the most beautiful corner of your home the moment you set it down. But if it doesn’t make you smile, feel at home, or bring a little warmth to your workspace, no worries.</p><p>You can return it within 90 days for a full refund.</p>",
+        "text": "<p>We’re confident The Persian Mouse Mat will turn your desk into the most beautiful corner of your home the moment you set it down. But if it doesn’t make you smile, feel at home, or bring a little warmth to your workspace, no worries.</p><p>You can return it within 90 days for a full refund.</p>",
         "days": 90,
         "badge_width": 170,
         "padding_top": 20,
@@ -296,13 +299,13 @@
           "type": "question",
           "settings": {
             "question": "What if I don’t like it?",
-            "answer": "<p>No worries! If the Persian Mouse Mat™ isn’t everything you hoped for, you can return it within 90 days for a full refund.</p>"
+            "answer": "<p>No worries! If The Persian Mouse Mat isn’t everything you hoped for, you can return it within 90 days for a full refund.</p>"
           }
         },
         "q2": {
           "type": "question",
           "settings": {
-            "question": "Is the Persian Mouse Mat™ good for gaming and work?",
+            "question": "Is The Persian Mouse Mat good for gaming and work?",
             "answer": "<p>Absolutely. The smooth micro-weave surface gives precise tracking for any mouse, and the anti-slip base keeps it firmly in place through long work or gaming sessions.</p>"
           }
         },
@@ -316,7 +319,7 @@
         "q4": {
           "type": "question",
           "settings": {
-            "question": "Is the Persian Mouse Mat™ a good gift?",
+            "question": "Is The Persian Mouse Mat a good gift?",
             "answer": "<p>It makes a beautiful gift for anyone who loves Persian design, cosy desk setups, or a little piece of home at work.</p>"
           }
         }

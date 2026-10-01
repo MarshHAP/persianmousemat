@@ -334,7 +334,8 @@
       qbOptions.forEach(function (o) {
         var q = parseInt(o.getAttribute('data-qty'), 10);
         var disc = parseFloat(o.getAttribute('data-discount')) || 0;
-        var price = Math.floor(current.price * q * (100 - disc) / 100);
+        var fixed = o.getAttribute('data-total');
+        var price = fixed ? parseInt(fixed, 10) : Math.floor(current.price * q * (100 - disc) / 100);
         var compare = (current.compare_at_price || current.price) * q;
         var p = $('[data-qb-price]', o);
         var c = $('[data-qb-compare]', o);
