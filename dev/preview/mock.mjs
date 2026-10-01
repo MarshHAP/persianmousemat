@@ -87,7 +87,7 @@ export const linklists = {
 };
 
 export const shop = {
-  name: 'Persian Mouse Mat',
+  name: 'The Persian Office',
   url: 'http://localhost',
   money_format: moneyFormat,
   customer_accounts_enabled: true,

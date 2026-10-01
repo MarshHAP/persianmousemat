@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Persian Mouse Mat — base theme styles
+   The Persian Office — base theme styles
    Layout mirrors a single-product "funnel" store: countdown + announcement
    bars, split product hero, accent ribbons, testimonials, dark features band,
    guarantee, FAQ, reviews, dark footer.
@@ -203,11 +203,15 @@ s { text-decoration-thickness: 2px; }
   font-size: calc(var(--logo-w-m) * .2); color: var(--accent);
   -webkit-text-stroke: 1px #111; text-shadow: 2px 2px 0 #111;
 }
+.wordmark__pre {
+  font-size: calc(var(--logo-w-m) * .075); font-style: normal; font-weight: 700;
+  letter-spacing: .35em; text-transform: uppercase; margin-bottom: 2px; margin-left: .35em;
+}
 .wordmark__bottom { font-size: calc(var(--logo-w-m) * .15); white-space: nowrap; }
-.wordmark__bottom sup { font-size: .45em; }
 @media (min-width: 990px) {
   .wordmark__top { font-size: calc(var(--logo-w) * .22); }
   .wordmark__bottom { font-size: calc(var(--logo-w) * .16); }
+  .wordmark__pre { font-size: calc(var(--logo-w) * .075); }
 }
 .wordmark--dark { color: #fff; margin: 20px auto; --logo-w: 260px; --logo-w-m: 220px; }
 .wordmark--dark .wordmark__top { color: #fff; -webkit-text-stroke: 1px #000; text-shadow: 3px 3px 0 var(--accent); }

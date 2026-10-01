@@ -1,9 +1,9 @@
-# Persian Mouse Mat — Shopify theme
+# The Persian Office — Shopify theme
 
-A custom Shopify Online Store 2.0 theme for the Persian Mouse Mat brand. It is a
+A custom Shopify Online Store 2.0 theme for The Persian Office brand. It is a
 single-product "funnel" store whose layout mirrors the reference store
-(memorymat.shop) section for section, re-skinned with Persian Mouse Mat copy.
-Every piece of text, colour and image can be edited in the Shopify theme editor.
+(memorymat.shop) section for section, re-skinned for The Persian Office.
+The store's product is the Persian Mouse Mat™. Every piece of text, colour and image can be edited in the Shopify theme editor.
 
 **Colour.** The only accent is the dark red `#8b2718`, taken from
 orientalis.co, plus a deeper shade `#5e1a0f` for the announcement bars and
@@ -43,7 +43,7 @@ Add theme → Upload zip file**. Zip the theme folders (`assets`, `config`,
 `layout`, `locales`, `sections`, `snippets`, `templates`) at the root of the zip:
 
 ```bash
-zip -r persian-mouse-mat-theme.zip assets config layout locales sections snippets templates
+zip -r the-persian-office-theme.zip assets config layout locales sections snippets templates
 ```
 
 **Option B: Shopify CLI.**
@@ -74,7 +74,10 @@ shopify theme dev --store your-store.myshopify.com
    **Theme settings → Cart → Priority processing product**.
 5. **Bundle.** Create the second bundle product (the placeholder is "Persian
    Coaster Set™") and pick it in the *Bundle deal* section.
-6. **Logo.** Upload it under **Theme settings → Logo**. Until then, a text
+6. **Store name.** Set it to "The Persian Office" under **Settings → General**.
+   The browser tab title, the footer copyright and the logo's accessible label
+   all use it.
+7. **Logo.** Upload it under **Theme settings → Logo**. Until then, a text
    wordmark is shown.
 
 ## Images to supply

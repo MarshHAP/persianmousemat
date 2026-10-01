@@ -1,4 +1,4 @@
-/* Persian Mouse Mat theme scripts — no dependencies. */
+/* The Persian Office theme scripts — no dependencies. */
 (function () {
   'use strict';
 

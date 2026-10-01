@@ -1,7 +1,7 @@
 {
   "name": "persianmousemat-theme-dev",
   "private": true,
-  "description": "Local preview for the Persian Mouse Mat Shopify theme (renders Liquid with mock data).",
+  "description": "Local preview for The Persian Office Shopify theme (renders Liquid with mock data).",
   "type": "module",
   "scripts": {
     "preview": "node preview/server.mjs",
