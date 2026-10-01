@@ -66,11 +66,10 @@ shopify theme dev --store your-store.myshopify.com
 2. **Menus** (Online Store → Navigation):
    - `main-menu`: The Persian Mouse Mat (links to the product), Track Your Order, Contact.
    - `footer`: About Us, Shipping & Delivery, Returns & Refunds, Privacy Policy, Terms of Service, Contact.
-3. **Quantity-break discounts.** The Buy 2 (15% off) and Buy 3 (25% off)
-   prices are only displayed by the theme. To charge them at checkout, create
-   matching automatic discounts under **Discounts → Amount off products**
-   (for example, 15% off with a minimum quantity of 2 items, and 25% off with
-   a minimum of 3).
+3. **Quantity-break pricing.** The Buy 2 option shows a fixed £29.99 (set in
+   the *Quantity breaks* block). Checkout charges it through the automatic
+   discount described under *Product & pricing* below. If you change the
+   price, update both.
 4. **Priority processing.** Create a cheap product, for example "Priority
    Processing" at £2.99 with a £4.27 compare-at price. Then pick it under
    **Theme settings → Cart → Priority processing product**.
@@ -81,6 +80,23 @@ shopify theme dev --store your-store.myshopify.com
    all use it.
 7. **Logo.** Upload it under **Theme settings → Logo**. Until then, a text
    wordmark is shown.
+
+## Product & pricing
+
+Created in the **The Persian Mat** Shopify store (admin → Products):
+
+- **The Persian Mouse Mat** (`/products/the-persian-mouse-mat`), **draft**:
+  one variant at **£19.99** with no compare-at price, 19 photos with alt text,
+  vendor *The Persian Office*. Publish it when you're ready (set status to
+  Active and make it available on the Online Store channel).
+- **Automatic discount "2 for £29.99 – The Persian Mouse Mat"**: £9.99 off
+  when the cart has 2 or more of the mat, once per order (2 × £19.99 = £39.98
+  → £29.99). With 3 or more it still takes £9.99 off once. It combines with
+  shipping discounts only.
+
+Not created yet: inventory (tracking is off), shipping weight, SKU, the
+Priority Processing upsell product and the bundle's second product. The theme
+hides the upsell and the bundle until those products are set.
 
 ## Images to supply
 
